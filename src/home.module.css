@@ -1,0 +1,41 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.mainContainer{
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  color: #fff;
+  background: transparent;
+  padding-inline: 1.5rem;
+  overflow: hidden;
+  background: #7262E3;
+  background: linear-gradient(142deg,rgba(114, 98, 227, 1) 0%, rgba(69, 48, 178, 1) 100%); 
+}
+
+.mainTitle {
+  font-size: 4rem;
+  color: #fff;
+  text-align: left;
+  margin-top: 2rem;
+  margin-bottom: 5rem;
+}
+.taskFilterBtnContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.weeklyTasksContainer{
+  display: flex;
+  flex-direction: column;
+}
+.inProgressTasksContainer {
+  display: flex;
+  gap: 2rem;
+}
+.tasksContainer {
+  width: 100%;
+  margin: 1rem 0;
+}

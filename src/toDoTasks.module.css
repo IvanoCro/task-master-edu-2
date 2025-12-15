@@ -1,0 +1,42 @@
+.tasksWrapper {
+
+    background: #2C60D5;
+    background: linear-gradient(156deg,rgba(44, 96, 213, 1) 0%, rgba(241, 185, 226, 1) 100%);
+}
+.mainContent {
+    min-height: 100vh;
+    padding-inline: 2.5rem;
+}
+.title {
+    font-size: 2.5rem;
+    color: #fff;
+}
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem;
+    color: #fff;
+    margin-bottom: 2rem;
+}
+.tasksContainer {
+    background-color: #dcdddf;
+    border-radius: 22px;
+    padding: 1rem;
+}
+.taskList {
+    list-style: none;
+    padding: 1rem;
+}
+.taskListItem {
+    margin: 2rem 0;
+    background-color: #fff;
+    padding: 1rem;
+    border-radius: 22px;
+}
+.taskConfigureBtnsContainer {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1rem;
+}
