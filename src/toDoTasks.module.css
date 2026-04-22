@@ -1,15 +1,25 @@
 .tasksWrapper {
-
-    background: #2C60D5;
-    background: linear-gradient(156deg,rgba(44, 96, 213, 1) 0%, rgba(241, 185, 226, 1) 100%);
+    background: #F8FAFC;
+    background: linear-gradient(100deg, #F8FAFC 0%, #D4D4D5 100%);
 }
 .mainContent {
     min-height: 100vh;
     padding-inline: 2.5rem;
+    position: relative;
+    z-index: 10;
+    animation: fadeSlideIn 0.3s ease-in-out;
+}
+.taskHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: .3rem 0 1.5rem 0;
 }
 .title {
     font-size: 2.5rem;
-    color: #fff;
+     color: #414347;
+    font-weight: bold;
+    z-index: 10;
 }
 .header {
     display: flex;
@@ -20,9 +30,10 @@
     margin-bottom: 2rem;
 }
 .tasksContainer {
-    background-color: #dcdddf;
+    background-color: #2563EB;
     border-radius: 22px;
-    padding: 1rem;
+    padding: .2rem;
+    overflow-y: scroll;
 }
 .taskList {
     list-style: none;
@@ -33,10 +44,113 @@
     background-color: #fff;
     padding: 1rem;
     border-radius: 22px;
+    text-wrap: wrap;
 }
 .taskConfigureBtnsContainer {
     display: flex;
     justify-content: space-between;
     gap: 1rem;
     padding: 1rem;
+}
+.taskDescription {
+    overflow-wrap: break-word; 
+}
+.flexContainer {
+    display: flex;
+    justify-content: space-between;
+}
+.daysLeftText {
+    color: #5b6270ca;
+}
+.editPenImg {
+    max-width: 20px;
+    cursor: pointer;
+}
+.exitBtn {
+    background-color: #ff4d4d;
+    border: none;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border-radius: 12px;
+    cursor: pointer;
+}
+.filterContainer {
+    padding: 1rem;
+  }
+.filterSelect {
+    padding: 0.5rem;
+    border-radius: 12px;
+    border: none;
+    font-size: 1rem;
+    margin: .3rem 0 1rem 0;
+    background-color: #fff;
+}
+.noTasksText {
+    color: #fff;
+}
+@keyframes fadeSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (min-width: 1260px) {
+  .wrapper {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    grid-template-areas: "nav main";
+    gap: 2rem;
+    background-color:#c9c8c8;
+    padding: 2rem;
+    height: 100vh;
+  }
+  .navContainer {
+    grid-area: nav;
+    height: 100vh;
+    position: sticky; 
+    top: 0;
+  }
+  .tasksWrapper{
+    grid-area: main;
+    padding: 2rem;
+    overflow-y: auto;
+    height: 95vh;
+    border-radius: 20px;
+  }
+  .mainContent {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  .tasksContainer {                
+    display: flex;
+    flex-direction: column;
+     
+  }
+  .taskList {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 1rem;
+    grid-template-rows: repeat(auto,1fr);
+  }
+  .taskListItem {
+    border-radius: 8px;
+  }
+  .taskHeader {
+    margin-bottom: .3rem;
+  }
+  .taskDescription {
+    margin-bottom: 2rem;
+}
+.taskConfigureBtnsContainer {
+    margin-top: auto;
+}
+.taskTitle {
+    font-size: 1.5rem;
+}
 }

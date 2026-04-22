@@ -1,53 +1,127 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import Navigation from "./navigation";
-function AddTaskForm({ onSubmitTask }) {
+import styles from "./addTaskForm.module.css";
 
-    const [taskTitle, setTaskTitle] = useState("");
-    const [taskDueDate, setTaskDueDate] = useState("");
-    const [taskDescription, setTaskDescription] = useState("");
+function AddTaskForm({ tasks, onSubmitTask, onUpdateTask }) {
+  const [taskTitle, setTaskTitle] = useState("");
+  const [taskDueDate, setTaskDueDate] = useState("");
+  const [taskDescription, setTaskDescription] = useState("");
 
-    const navigate = useNavigate();
+  const { taskId } = useParams();
+  const isEditMode = Boolean(taskId);
 
-    function onFormSubmit(e) {
-        e.preventDefault();
+  const navigate = useNavigate();
+  const currentDate = new Date().toISOString().split("T")[0];
 
-        const newTask = {
-            id: Date.now(),
-            title: taskTitle,
-            dueDate: taskDueDate,
-            description: taskDescription
-        };
+  useEffect(() => {
+    if (!isEditMode || !Array.isArray(tasks)) return;
+    const taskToEdit = tasks.find((t) => t.id === Number(taskId));
+    if (taskToEdit) {
+      setTaskTitle(taskToEdit.title);
+      setTaskDueDate(taskToEdit.dueDate);
+      setTaskDescription(taskToEdit.description);
+    }
+  }, [isEditMode, taskId, tasks]);
 
-        onSubmitTask(newTask);
+  function isDateValid(date) {
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
 
-        navigate("/toDoTasks");
+    const selectedDate = new Date(date);
+    selectedDate.setHours(0, 0, 0, 0);
+
+    return selectedDate >= today;
+  }
+
+  function onFormSubmit(e) {
+    e.preventDefault();
+
+    if (taskTitle.trim() === "") {
+      alert("Task title cannot be empty.");
+      return;
     }
 
-    return (
-        <>
-            <header>
-                <h2>Add Task</h2>
-            </header>
+    if (taskDueDate === "") {
+      alert("Please select a due date.");
+      return;
+    }
 
-            <form onSubmit={onFormSubmit}>
-                <label htmlFor="task-title">Task Title</label>
-                <input type="text" id="task-title" onChange={(e) => setTaskTitle(e.target.value)} />
+    if (!isDateValid(taskDueDate)) {
+      alert("Due date cannot be in the past.");
+      return;
+    }
 
-                <div className="taskDueDateInputContainer">
-                    <label htmlFor="task-title">Task Due Date</label>
-                    <p>To:</p>
-                    <input type="date" id="task-due-date" onChange={(e) => setTaskDueDate(e.target.value)} />
-                </div>
+    if (isEditMode) {
+      onUpdateTask({
+        id: Number(taskId),
+        title: taskTitle,
+        dueDate: taskDueDate,
+        description: taskDescription,
+      });
+    } else {
+      onSubmitTask({
+        id: Date.now(),
+        title: taskTitle,
+        dueDate: taskDueDate,
+        description: taskDescription,
+        createdAt: new Date().toISOString(),
+      });
+    }
 
-                <label htmlFor="task-description">Task Description</label>
-                <input type="text" id="task-description" onChange={(e) => setTaskDescription(e.target.value)} />
+    navigate("/toDoTasks");
+  }
 
-                <button type="submit">Add Task</button>
-            </form>
-            <Navigation />
-        </>
-    );
+  return (
+    <div className={styles.wrapper}>
+      <Navigation />
+      <div className={styles.addTaskFormContainer}>
+        <header className={styles.header}>
+          <h2>{isEditMode ? "Edit Task" : "Add Task"}</h2>
+        </header>
+
+        <form onSubmit={onFormSubmit} className={styles.addTaskForm}>
+          <label className={styles.inputTitle}>Task Title</label>
+          <input
+            type="text"
+            className={styles.input}
+            value={taskTitle}
+            placeholder="Enter task title..."
+            onChange={(e) => setTaskTitle(e.target.value)}
+          />
+
+          <div className={styles.taskDateInputContainer}>
+            <label className={styles.inputTitle}>Task Due Date</label>
+            <div
+              className={`${styles.flexContainer} ${styles.dateInputContainer}`}
+            >
+              <p>From: {currentDate}</p>
+              <p>To:</p>
+              <input
+                type="date"
+                min={currentDate}
+                className={`${styles.input} ${styles.dateInput}`}
+                value={taskDueDate}
+                onChange={(e) => setTaskDueDate(e.target.value)}
+              />
+            </div>
+          </div>
+
+          <label className={styles.inputTitle}>Task Description</label>
+          <textarea
+            className={styles.input}
+            value={taskDescription}
+            placeholder="Enter task description..."
+            onChange={(e) => setTaskDescription(e.target.value)}
+          />
+
+          <button type="submit" className={styles.submitButton}>
+            {isEditMode ? "Save Changes" : "Add Task"}
+          </button>
+        </form>
+      </div>
+    </div>
+  );
 }
 
 export default AddTaskForm;
