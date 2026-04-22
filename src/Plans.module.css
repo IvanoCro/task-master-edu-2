@@ -1,0 +1,303 @@
+.wrapper {
+  padding: 0;
+  margin: 0;
+}
+
+/* HEADER */
+
+.title {
+  font-size: 3rem;
+  color: #414347;
+  text-align: left;
+  margin-top: 2rem;
+  margin-bottom: 0.5rem;
+  z-index: 10;
+}
+
+.subtitle {
+  font-size: 1.1rem;
+  color: #5B6270;
+  text-align: left;
+  margin-bottom: 3rem;
+}
+
+.header {
+  margin-bottom: 1rem;
+}
+
+/* PLANS GRID */
+
+.plansList {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2rem;
+  max-width: 900px;
+
+  align-items: stretch;
+}
+
+/* PLAN CARD */
+
+.planCard {
+  background: white;
+  border-radius: 0.8rem;
+  padding: 2rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+
+  position: relative;
+  border: 2px solid transparent;
+
+  height: 100%;
+}
+
+.planCard:hover {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+  transform: translateY(-6px);
+}
+
+/* BASIC PLAN */
+
+.planCard.basic {
+  border-left: 4px solid #8B5CF6;
+}
+
+.planCard.basic .planName {
+  color: #414347;
+}
+
+/* PREMIUM PLAN */
+
+.planCard.premium {
+  border: 2px solid #2563EB;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.15);
+  /* uklonjen transform: scale(1.05); */
+}
+
+.planCard.premium:hover {
+  box-shadow: 0 12px 28px rgba(37, 99, 235, 0.2);
+  transform: translateY(-6px); /* ostaje samo hover translate */
+}
+
+.planCard.premium .planName {
+  color: #2563EB;
+}
+
+/* BADGE */
+
+.badge {
+  position: absolute;
+  top: -12px;
+  right: 20px;
+  background: #2563EB;
+  color: #F8FAFC;
+  padding: 0.4rem 0.9rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+/* PLAN HEADER */
+
+.planHeader {
+  text-align: center;
+}
+
+.planName {
+  font-size: 1.5rem;
+  margin: 0;
+  margin-bottom: 0.75rem;
+}
+
+.priceSection {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 0.3rem;
+  margin-bottom: 0.75rem;
+}
+
+.price {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #414347;
+}
+
+.period {
+  font-size: 1rem;
+  color: #5B6270;
+  font-weight: 500;
+}
+
+.description {
+  font-size: 0.95rem;
+  color: #5B6270;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* FEATURES */
+
+.featuresList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+
+  flex-grow: 1;
+}
+
+.feature {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: #414347;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.checkmark {
+  color: #10B981;
+  font-weight: 700;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+/* BUTTON */
+
+.ctaButton {
+  padding: 0.85rem 1.5rem;
+  border-radius: 0.6rem;
+  border: 2px solid;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  width: 100%;
+  font-family: inherit;
+
+  margin-top: auto;
+}
+
+/* BASIC BUTTON */
+
+.planCard.basic .ctaButton {
+  background: #8B5CF6;
+  border: 2px solid #8B5CF6;
+  color: #fff;
+  cursor: default;
+  opacity: 0.8;
+}
+
+.planCard.basic .ctaButton:hover {
+  background: transparent;
+  color: #8B5CF6;
+  transform: none;
+  box-shadow: none;
+}
+
+/* PREMIUM BUTTON */
+
+.planCard.premium .ctaButton {
+  background: #2563EB;
+  border: 2px solid #2563EB;
+  color: #fff;
+}
+
+.planCard.premium .ctaButton:hover {
+  background: transparent;
+  color: #2563EB;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* NAV */
+
+.navContainer {
+  position: relative;
+  z-index: 100;
+}
+
+/* DESKTOP LAYOUT */
+
+@media (min-width: 1260px) {
+
+  .wrapper {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    grid-template-areas: "nav main";
+    gap: 2rem;
+    background-color: #c9c8c8;
+    padding: 2rem;
+  }
+
+  .navContainer {
+    grid-area: nav;
+    height: 100dvh;
+    position: sticky;
+    top: 0;
+  }
+
+  .mainContainer {
+    grid-area: main;
+    padding: 2rem;
+    border-radius: 20px;
+    min-height: 95vh;
+    background: #2563EB;
+
+    display: flex;
+    flex-direction: column;
+  }
+
+  .title {
+    color: #F8FAFC;
+  }
+
+  .subtitle {
+    color: #F8FAFC;
+  }
+
+  .plansList {
+    margin-top: 2rem;
+    align-self: center;
+    width: 100%;
+    max-width: 1000px;
+    justify-content: center;
+  }
+
+}
+/* MOBILE LAYOUT - za ekrane manje od 1260px */
+@media (max-width: 1260px) {
+  
+  .plansList {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto 2rem auto;
+  }
+
+  .planCard {
+    width: 100%;
+    height: auto; /* neka rastegne visinu po sadržaju, ali budu iste unutar flex-a */
+  }
+
+  .planCard.basic,
+  .planCard.premium {
+    transform: none; /* ukloni scale za mobile */
+  }
+
+  .ctaButton {
+    width: 100%; /* button i dalje puni karticu */
+  }
+}
