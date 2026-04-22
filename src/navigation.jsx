@@ -73,6 +73,38 @@ export default function Navigation() {
 
         <li>
           <Link
+            to="/Ai"
+            className={`${styles.navLink} ${
+              currentPath === "/Ai" ? styles.active : ""
+            }`}
+          >
+            <img
+              className={styles.navIcon}
+              src={`${import.meta.env.BASE_URL}img/breathing_icon.png`}
+              alt="AI Assistant"
+            />
+            <span className={styles.navText}>AI</span>
+          </Link>
+        </li>
+
+        <li>
+          <Link
+            to="/Plans"
+            className={`${styles.navLink} ${
+              currentPath === "/Plans" ? styles.active : ""
+            }`}
+          >
+            <img
+              className={styles.navIcon}
+              src={`${import.meta.env.BASE_URL}img/breathing_icon.png`}
+              alt="Plans"
+            />
+            <span className={styles.navText}>Plan</span>
+          </Link>
+        </li>
+
+        <li>
+          <Link
             to="/Settings"
             className={`${styles.navLink} ${
               currentPath === "/Settings" 

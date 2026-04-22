@@ -1,0 +1,5 @@
+.addTaskBtn, .removeTaskBtn {
+    border: none;
+    border-radius: 13px;
+    padding: .5rem 1.5rem;
+}

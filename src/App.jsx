@@ -13,6 +13,8 @@ import AccountSetting from "./AccountSetting.jsx";
 import Data from "./Data.jsx";
 import Credits from "./Credits.jsx";
 import Blog from "./Blog.jsx";
+import Plans from "./Plans.jsx";
+import Ai from "./Ai.jsx";
 // styles
 import "./App.css";
 
@@ -265,6 +267,20 @@ function App() {
           path="/Blog"
           element={
             <Blog />
+          }
+        />
+
+        <Route
+          path="/Plans"
+          element={
+            <Plans />
+          }
+        />
+
+        <Route
+          path="/Ai"
+          element={
+            <Ai />
           }
         />
 
