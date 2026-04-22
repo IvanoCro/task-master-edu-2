@@ -1,0 +1,48 @@
+.wrapper {
+    padding: 1rem;
+}
+.creditsContainer {
+    padding: .2rem 1rem;
+}
+.title {
+  font-size: 3rem;
+  color: #414347;
+  text-align: left;
+  margin-top: 2rem;
+  margin-bottom: 5rem;
+  z-index: 10;
+}
+
+.creditsTextContainer{
+    text-align: center;
+    background-color: #2563EB;
+    color: #fff;
+    font-weight: bold;
+    border-radius: 7px;
+    padding-block: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    font-size: 1.5rem;
+}
+.backButton {
+    position: fixed;
+    bottom: 2rem;
+    left: 2rem;
+
+    display: inline-block;
+    padding: .5rem 1.5rem;
+    background-color: #2563EB;
+    color: #fff;
+    border-radius: 10px;
+    text-decoration: none;
+    font-size: 1.2rem;
+    transition: .3s all;
+}
+
+@media (min-width: 1260px){
+    .creditsTextContainer{
+        width: 50%;
+        margin: 0 auto;
+    }
+}

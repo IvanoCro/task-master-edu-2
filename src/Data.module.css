@@ -1,0 +1,90 @@
+.wrapper {
+    padding: 1rem;
+}
+.creditsContainer {
+    padding: .2rem 1rem;
+}
+.title {
+  font-size: 3rem;
+  color: #414347;
+  text-align: left;
+  margin-top: 2rem;
+  margin-bottom: 5rem;
+  z-index: 10;
+}
+.dataTextContainer {
+    background-color: #164cc0;
+    color: #fff;
+    padding: 2rem;
+    border-radius: 10px;
+}
+.dataItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+.dataItem:last-child {
+    border-bottom: none;
+}
+.label {
+    font-weight: 600;
+    font-size: 1rem;
+}
+.value {
+    font-size: 1rem;
+    font-weight: 700;
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    min-width: 120px;
+    text-align: center;
+}
+.backButton {
+    position: fixed;
+    bottom: 2rem;
+    left: 2rem;
+
+    display: inline-block;
+    padding: .5rem 1.5rem;
+    background-color: #164cc0;
+    color: #fff;
+    border-radius: 10px;
+    text-decoration: none;
+    font-size: 1.2rem;
+    transition: .3s all;
+}
+.backButton:hover {
+    background-color: #1341a8;
+    transform: translateY(-2px);
+}
+@media (max-width: 768px) {
+    .title {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+    }
+    .dataTextContainer {
+        padding: 1.5rem;
+    }
+    .dataItem {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+    .value {
+        width: 100%;
+    }
+    .backButton {
+        bottom: 1rem;
+        left: 1rem;
+        font-size: 1rem;
+        padding: 0.4rem 1rem;
+    }
+}
+@media (min-width: 1260px) {
+    .dataTextContainer {
+        width: 50%;
+        margin:0 auto;
+    }
+}

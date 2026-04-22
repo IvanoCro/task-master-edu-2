@@ -1,20 +1,190 @@
+/* ================= RESET / BASE ================= */
+* {
+  box-sizing: border-box;
+}
+
+/* ================= HEADER ================= */
+.header {
+  display: flex;
+  padding: 0;
+  margin-bottom: 1.5rem;
+  color: #2b2f36;
+  font-size: 2rem;
+  z-index: 10;
+}
+
+/* ================= MAIN CONTAINER ================= */
 .addTaskFormContainer {
-    background-color: #dcdddf;
+  min-height: 100vh;
+  background: linear-gradient(100deg, #F8FAFC 0%, #D4D4D5 100%);
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
 }
-.addTaskFormTitle{
-    color: #fff;   
-}
+
+/* ================= FORM ================= */
 .addTaskForm {
-    background-color: #ffffff;
-    color: #182848;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+
+  margin: auto auto;
+  padding: 2.5rem;
+
+  background-color: #ffffff;
+  color: #2b2f36;
+
+  border-radius: 16px;
+  min-width: 80%;
+  max-width: 900px;
+
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.08),
+    0 1px 4px rgba(0, 0, 0, 0.06);
+
+  z-index: 10;
+  animation: fadeSlideIn 0.3s ease-in-out;
 }
-.addTaskInput{
-    background-color: #d9d9d9;
-    border: none;
-    padding: 8px;
-    margin-bottom: 10px;
+
+/* ================= FLEX HELPERS ================= */
+.flexContainer {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
-.addTaskLabel{
-    color: #182848;
-    font-size: 1.5rem;
+
+/* ================= LABELS ================= */
+.inputTitle {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #4b5563;
+  margin-bottom: 0.3rem;
+}
+
+/* ================= INPUTS ================= */
+.input {
+  width: 100%;
+  padding: 0.7rem 0.9rem;
+  font-size: 1rem;
+
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  background-color: #f9fafb;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.input:focus {
+  outline: none;
+  border-color: #3061ca;
+  box-shadow: 0 0 0 3px rgba(48, 97, 202, 0.15);
+  background-color: #ffffff;
+}
+
+textarea.input {
+  min-height: 120px;
+  resize: vertical;
+}
+
+/* ================= DATE INPUT ================= */
+.taskDateInputContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.dateInputContainer {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0;
+}
+
+.dateInput {
+  margin-bottom: 0;
+}
+
+/* ================= BUTTON ================= */
+.submitButton {
+  margin-top: 1.5rem;
+  align-self: center;
+
+  width: 220px;
+  padding: 0.8rem;
+
+  font-size: 1rem;
+  font-weight: 600;
+
+  background: linear-gradient(135deg, #3061ca, #4f7df0);
+  color: #ffffff;
+
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease,
+    opacity 0.15s ease;
+}
+
+.submitButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(48, 97, 202, 0.35);
+  opacity: 0.95;
+}
+
+.submitButton:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 10px rgba(48, 97, 202, 0.25);
+}
+
+/* ================= ANIMATION ================= */
+@keyframes fadeSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ================= DESKTOP LAYOUT ================= */
+@media (min-width: 1260px) {
+  .wrapper {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    grid-template-areas: "nav main";
+    gap: 2rem;
+    background-color: #c9c8c8;
+    padding: 2rem;
+  }
+
+  .navContainer {
+    grid-area: nav;
+    height: 100vh;
+    position: sticky;
+    top: 0;
+  }
+
+  .addTaskFormContainer {
+    grid-area: main;
+    padding: 2rem;
+    overflow-y: auto;
+    height: 100vh;
+    border-radius: 20px;
+  }
+
+  .addTaskForm {
+    min-width: 70%;
+  }
+
+  .input {
+    font-size: 1.05rem;
+  }
 }

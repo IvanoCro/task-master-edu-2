@@ -1,0 +1,90 @@
+.wrapper {
+    padding: 1rem;
+}
+.creditsContainer {
+    padding: .2rem 1rem;
+}
+.title {
+  font-size: 3rem;
+  color: #414347;
+  text-align: left;
+  margin-top: 2rem;
+  margin-bottom: 5rem;
+  z-index: 10;
+}
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    background-color: #164cc0;
+    color: #fff;
+    padding: 1rem;
+    border-radius: 10px;
+}
+label {
+    font-size: 2rem;
+}
+input {
+    padding: 1rem;
+    font-size: 1rem;
+    border-radius: 10px;
+}
+.success {
+    border: 3px solid green;
+}
+.backButton {
+    position: fixed;
+    bottom: 2rem;
+    left: 2rem;
+
+    display: inline-block;
+    padding: .5rem 1.5rem;
+    background-color: #2563EB;
+    color: #fff;
+    border-radius: 10px;
+    text-decoration: none;
+    font-size: 1.2rem;
+    transition: .3s all;
+}
+
+.input {
+  border: 1px solid #ccc;
+  transition: border-color 0.3s ease;
+}
+
+.success {
+  border-color: #22c55e;
+}
+
+.successText {
+  color: #22c55e;
+  font-size: 0.85rem;
+  animation: fadeIn 0.3s ease;
+}
+.changeBtn {
+    background-color: #0D9488;
+    color: #fff;
+    font-size: 1.5rem;
+    padding: .3rem;
+    border: none;
+    border-radius: 10px;
+    width: 200px;
+    margin: 2rem auto .5rem auto;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-3px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (min-width: 1260px) {
+  form {
+    width: 50%;
+    margin:0 auto;
+  }
+}

@@ -3,25 +3,54 @@
   padding: 0;
   box-sizing: border-box;
 }
+
 .mainContainer{
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  color: #fff;
+  color: #5B6270;
   background: transparent;
   padding-inline: 1.5rem;
   overflow: hidden;
-  background: #7262E3;
-  background: linear-gradient(142deg,rgba(114, 98, 227, 1) 0%, rgba(69, 48, 178, 1) 100%); 
+  background: #F8FAFC;
+  background: linear-gradient(100deg, #F8FAFC 0%, #D4D4D5 100%);
 }
-
+.statisticsContainer {
+  background-color: #2563EB;
+  color: #F8FAFC;
+  padding: 1rem;
+  border-radius: .6rem;
+  min-height: 50vh;
+}
+.statisticsContainer:hover {
+    transform: translateY(-2px);
+    cursor: pointer;
+}
 .mainTitle {
   font-size: 4rem;
-  color: #fff;
+   color: #414347;
   text-align: left;
   margin-top: 2rem;
   margin-bottom: 5rem;
+  z-index: 10;
 }
+
+.subtitle{
+  color: #414347d9;
+}
+.dailyMsgContainer {
+  background-color: #2563EB;
+  color: #F8FAFC;
+  grid-area: daily;
+  padding: .8rem;
+  border-radius: .6rem;
+  margin-bottom: 2rem;
+}
+.dailyMsgContainer .subtitle{
+  color: #fff;
+  
+}
+
 .taskFilterBtnContainer {
   display: flex;
   flex-direction: column;
@@ -30,12 +59,120 @@
 .weeklyTasksContainer{
   display: flex;
   flex-direction: column;
+  animation: fadeSlideIn 0.3s ease-in-out;
+  
+}
+.weeklyReviewContainer {
+  z-index: 10;
 }
 .inProgressTasksContainer {
   display: flex;
   gap: 2rem;
 }
 .tasksContainer {
-  width: 100%;
+  
   margin: 1rem 0;
+}
+.dailyMsg {
+  margin-top: 1rem;
+}
+@keyframes fadeSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 1260px){
+  .tasksContainer {
+    width: 100%;
+  }
+}
+
+@media (min-width: 1260px) {
+  .wrapper {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    grid-template-areas: "nav main";
+    gap: 2rem;
+    background-color:#c9c8c8;
+    padding: 2rem;
+  }
+  .navContainer {
+    grid-area: nav;
+    height: 100dvh;
+    position: sticky; 
+    top: 0;
+  }
+  .mainContainer {
+    grid-area: main;
+    padding: 2rem;
+    max-height: 90%;
+    min-height: 95vh;
+    border-radius: 20px;
+    display: grid;
+    grid-template-areas: "title title title title"
+                         "daily stats stats stats"
+                         "tasks stats stats stats";
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 1.5rem;
+    background: #2563EB;
+   
+  }
+  .subtitle {
+    color: #F8FAFC;
+  }
+  .mainTitle {
+    grid-area: title;
+    width: 100%;
+    color: #F8FAFC;
+    margin-top: 1rem;
+    margin-bottom: 0rem;
+  }
+  .weeklyTasksContainer{
+    grid-area: tasks;
+    background-color: #F8FAFC;
+    border-radius: 13px;
+    padding: 1rem;
+  }
+  .weeklyTasksContainer .subtitle{
+    color: #434343;
+  }
+  .statisticsContainer {
+    grid-area: stats;
+    width: 100%;
+  }
+  .container {
+    background-color: #F8FAFC;
+    color: #434343;
+  }
+  .dailyMsgContainer .subtitle{
+    color: #434343;
+}
+  .flexContainer {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2.5rem;
+  }
+  .quotesImgContainerLeft {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    transform: rotate(180deg);
+    margin:0 0 1rem 0;
+  }
+  .quotesImgContainerRight {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 1rem;
+  }
+  .dailyMsgTitle, .dailyMsg {
+    text-align: center;
+  }
 }

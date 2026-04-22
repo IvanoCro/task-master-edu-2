@@ -1,0 +1,81 @@
+.setupContainer {
+    background: #7262E3;
+    background: linear-gradient(142deg,rgba(114, 98, 227, 1) 0%, rgba(69, 48, 178, 1) 100%);
+    min-height: 100vh;
+    color: #fff;
+}
+.title {
+    font-size: 3rem;
+    padding: .5rem;
+}
+.arrowIcon {
+    width: 50px;
+}
+.setupForm {
+    padding: 1rem;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+.inputGroup{
+    display: flex;
+    flex-direction: column;
+    background-color: #D9D9D9;
+    padding: 2rem;
+    border-radius: 1rem;
+    gap: 2rem;
+    transform: translateY(160px);
+}
+.labelName {
+    font-size: 2rem;
+    color: #494949;
+}
+.inputName {
+    background-color: #BBBBBB;
+    padding: 1rem;
+    border: none;
+    font-size: 1rem;
+}
+.submitBtn {
+    background-color: #fff;
+    border: none;
+    border-radius: 50%;
+    padding: .3rem;
+    cursor: pointer;
+    max-width: fit-content;
+    margin-top: auto;
+    margin-left: auto;
+    position: absolute;
+    bottom: 50px;
+    right: 50px;
+}
+.submitBtn:hover {
+    background-color: #f0f0f0;
+    animation: btnSpin .2s ease-in-out;
+}
+
+@keyframes btnSpin{
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+@media (min-width: 1260px) { 
+    .inputGroup{
+        width: 50%;
+        margin: 0 auto;
+    }
+    .setupContainer {
+    background: #164cc0;
+    color: #fff;
+    }
+    .title {
+        padding: 3rem;
+    }
+    .arrowIcon {
+    width: 80px;
+    }
+
+}

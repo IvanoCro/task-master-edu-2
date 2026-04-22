@@ -1,0 +1,81 @@
+.settingsContainer {
+    padding: .2rem 2rem;
+}
+.title {
+  font-size: 3rem;
+  color: #414347;
+  text-align: left;
+  margin-top: 2rem;
+  margin-bottom: 5rem;
+  z-index: 10;
+}
+.settingContainer {
+    background-color: #2563EB;
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    margin: .5rem 0;
+    cursor: pointer;
+    transition: .3s all;
+    color: #fff;
+    border-radius: 15px;
+    text-decoration: none;
+}
+.settingContainer:hover {
+    background-color: #4871cb;
+}
+.arrowImg {
+    width: 40px;
+    height: 40px;
+    margin-left: auto;
+    filter: invert(1);
+}
+.settingImg {
+    width: 40px;
+    height: 40px;
+    margin-right: 1rem;
+    filter: invert(1);
+}
+
+
+@media (min-width: 1260px) {
+  .wrapper {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    grid-template-areas: "nav main";
+    gap: 2rem;
+    background-color:#c9c8c8;
+    padding: 2rem;
+  }
+  .settingsContainer {
+    background-color: #164cc0;
+    border-radius: 12px;
+    height: 94vh;
+  }
+  .title {
+    color: #fff;
+  }
+  .settingContainer{
+    background-color: #fff;
+    color: #212121d9;
+  }
+  .settingContainer:hover {
+    background-color: #d5d5d5;
+}
+  .settingImg, .arrowImg {
+    filter: none;
+  }
+  .navContainer {
+    grid-area: nav;
+    height: 100vh;
+    position: sticky; 
+    top: 0;
+  }
+  .mainContainer {
+    grid-area: main;
+    padding: 2rem;
+    overflow-y: auto;
+    height: 100vh;
+    border-radius: 20px;
+  }
+}
