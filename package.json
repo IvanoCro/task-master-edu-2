@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://IvanoCro.github.io/task-master-edu",
+  "homepage": "https://IvanoCro.github.io/task-master-edu-2/",
   "scripts": {
     "dev": "vite",
     "predeploy": "npm run build",
@@ -13,8 +13,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@google/generative-ai": "^0.24.1",
+    "@gsap/react": "^2.1.2",
     "react": "^19.2.1",
     "react-dom": "^19.2.1",
+    "react-markdown": "^10.1.0",
     "react-router-dom": "^7.10.1",
     "recharts": "^3.7.0"
   },

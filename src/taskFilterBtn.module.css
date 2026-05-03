@@ -40,3 +40,9 @@
     }
 
 }
+
+@media (max-width: 768px) {
+  .taskFilterBtn { font-size: 1rem; padding: 1rem; border-radius: 10px; width: 100%; height: auto; }
+  .taskFilterBtn:hover { background-color: #1e3a8a; }
+  .navArrow { width: 14px; }
+}

@@ -55,7 +55,7 @@ const Data = ({ userName, completedTasksCount, toDoTaskCount }) => {
                     
                     <div className={styles.dataItem}>
                         <span className={styles.label}>App Version:</span>
-                        <span className={styles.value}>1.0.0</span>
+                        <span className={styles.value}>2.0.0</span>
                     </div>
                 </div>
                 <Link 

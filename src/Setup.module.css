@@ -79,3 +79,14 @@
     }
 
 }
+
+@media (max-width: 768px) {
+  .setupContainer { background: linear-gradient(142deg, rgba(114, 98, 227, 1) 0%, rgba(69, 48, 178, 1) 100%); }
+  .title { font-size: 2rem; padding: 1rem; }
+  .arrowIcon { width: 35px; }
+  .setupForm { padding: 1rem; min-height: auto; }
+  .inputGroup { padding: 1.5rem; gap: 1.5rem; transform: translateY(80px); width: 95%; }
+  .labelName { font-size: 1.5rem; }
+  .inputName { padding: 0.8rem; font-size: 0.95rem; }
+  .submitBtn { bottom: 30px; right: 30px; padding: 0.25rem; }
+}

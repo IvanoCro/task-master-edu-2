@@ -4,9 +4,13 @@
     left: 0;
     width: 100%;
     z-index: 1000;
-    background-color: #f1f3f5;
-    padding: .3rem;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);}
+    background-color: #ffffff; /* Bijela pozadina za čišći izgled */
+    /* Padding postavljen da ne bude zgurano uz rubove */
+    padding: 0.75rem 0; 
+    box-shadow: 0 -2px 15px rgba(0, 0, 0, 0.08);
+    /* Podrška za novije mobitele s "notchom" na dnu */
+    padding-bottom: max(0.75rem, env(safe-area-inset-bottom));
+}
 
 .navList {
     display: flex;
@@ -18,66 +22,85 @@
     list-style-type: none;
 }
 
-.navIcon {
-    max-width: 40px;
-}
-
 .navLink {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    padding: 8px 16px;
-    border-left: 4px solid transparent;
-    border-radius: 4px 0 0 4px;
+    justify-content: center;
     text-decoration: none;
-    color: #182848;
-    transition: background-color 0.2s, color 0.2s;
-
+    color: #4b5563; /* Malo mekša siva boja */
+    transition: all 0.2s ease;
+    /* Dajemo svakom linku dovoljno prostora za dodir */
+    flex: 1; 
+    min-height: 44px;
 }
 
+.navIcon {
+    width: 24px; /* Standardna veličina za mobilne ikone */
+    height: 24px;
+    transition: transform 0.2s ease;
+}
+
+/* Aktivno stanje na mobitelu - vizualni feedback */
+.navLink.active .navIcon {
+    transform: translateY(-3px);
+    filter: invert(31%) sepia(94%) saturate(2259%) hue-rotate(213deg) brightness(96%) contrast(101%);
+    /* Ako koristiš slike kao ikone, filter ih boji u plavo */
+}
 
 .navText {
-    display: none;
-    font-size: 1.5rem;
-    font-weight: 500;
-    color: #182848;
+    display: none; /* Ostaje skriveno na mobitelu prema pravilu */
 }
 
+/* --- DESKTOP LAYOUT (1260px+) --- */
 @media (min-width: 1260px) {
+    .navContainer {
+        position: relative;
+        max-width: fit-content;
+        height: 94.5%;
+        background-color: #EDEDED;
+        border-radius: 20px;
+        padding: 1rem 0;
+        padding-right: 0;
+        bottom: auto;
+        box-shadow: none;
+    }
+
     .navIcon {
         display: none;
     }
 
     .navText {
         display: inline;
+        font-size: 1.2rem; /* Malo smanjeno da ne izlazi iz okvira na nekim rezolucijama */
+        font-weight: 500;
+        color: #182848;
     }
 
     .navList {
         flex-direction: column;
         align-items: center;
         margin-top: 2rem;
+        padding: 1rem 0 1rem 1rem;
     }
+
+    .navLink {
+        min-width: 300px;
+        margin: .5rem 0;
+        flex-direction: row;
+        padding: 12px 20px;
+        justify-content: flex-start;
+        border-left: 4px solid transparent;
+        flex: none; /* Isključujemo mobilni flex:1 */
+    }
+
     .navLink.active {
         background-color: #2563eb; 
         color: #fff;              
         border-radius: 8px 0px 0px 8px; 
     }
+
     .navLink.active .navText {
         color: #fff;              
-    }
-    .navList {
-        padding: 1rem 0 1rem 1rem;
-    }
-    .navLink {
-        min-width: 300px;
-        margin: .5rem 0;
-    }
-    .navContainer {
-        max-width: fit-content;
-        height: 94.5%;
-        background-color: #EDEDED;
-        border-radius: 20px;
-        bottom: 0px;
-        padding-right: 0;
-        position: relative;
     }
 }
