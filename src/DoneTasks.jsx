@@ -26,7 +26,7 @@ const DoneTasks = ({tasks, onRemoveTask}) => {
                 <div className={styles.tasksContainer}>
                     <ul className={styles.taskList}>
                         {tasks.length === 0 ? (
-                            <p className={styles.noTasksText}>No tasks yet</p>
+                            <p className={styles.noTasksText}>No tasks</p>
                         ) : (
                             tasks.map(task => (
                                 <li

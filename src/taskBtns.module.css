@@ -35,3 +35,8 @@
     }
 
 }
+
+@media (max-width: 768px) {
+  .addTaskBtn, .removeTaskBtn { font-size: 0.9rem; padding: 8px 14px; }
+  .taskBtnsContainer { width: 100%; display: flex; flex-direction: column; gap: 0.5rem; }
+}

@@ -155,7 +155,7 @@ function App() {
   // ===============================
 
   return (
-    <BrowserRouter basename="/task-master-edu">
+    <BrowserRouter basename="/task-master-edu-2">
       <Routes>
 
         <Route
@@ -280,7 +280,7 @@ function App() {
         <Route
           path="/Ai"
           element={
-            <Ai />
+            <Ai tasks={tasks} />
           }
         />
 

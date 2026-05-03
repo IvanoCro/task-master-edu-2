@@ -252,6 +252,7 @@
     padding: 2rem;
     border-radius: 20px;
     min-height: 95vh;
+    max-height: 90vh;
     background: #2563EB;
 
     display: flex;
@@ -300,4 +301,18 @@
   .ctaButton {
     width: 100%; /* button i dalje puni karticu */
   }
+}
+
+@media (max-width: 768px) {
+  .wrapper { padding: 1rem; }
+  .title { font-size: 2rem; margin-top: 1rem; margin-bottom: 1.5rem; }
+  .subtitle { font-size: 0.95rem; margin-bottom: 2rem; }
+  .plansList { gap: 1rem; margin-bottom: 1.5rem; }
+  .planCard { padding: 1.5rem; border-radius: 0.6rem; }
+  .planName { font-size: 1.2rem; }
+  .price { font-size: 2rem; }
+  .period { font-size: 0.9rem; }
+  .description { font-size: 0.85rem; }
+  .feature { font-size: 0.85rem; }
+  .ctaButton { padding: 0.7rem 1rem; font-size: 0.85rem; }
 }

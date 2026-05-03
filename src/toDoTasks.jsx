@@ -61,21 +61,27 @@ const Tasks = ({ tasks, onCompleted }) => {
                 </header>
                 <main className={styles.mainContent}>
                     <div className={styles.tasksContainer}>
-                            <div className={styles.filterContainer}>
-                                <select
-                                    className={styles.filterSelect}
-                                    value={filterOption}
-                                    onChange={(e) => setFilterOption(e.target.value)}
-                                >
-                                    <option value="nearest">Nearest deadline</option>
-                                    <option value="newest">Newest</option>
-                                    <option value="oldest">Oldest</option>
-                                </select>
-                            </div>
+                        <div className={styles.filterContainer}>
+                            <select
+                                className={styles.filterSelect}
+                                value={filterOption}
+                                onChange={(e) => setFilterOption(e.target.value)}
+                            >
+                                <option value="nearest">Nearest deadline</option>
+                                <option value="newest">Newest</option>
+                                <option value="oldest">Oldest</option>
+                            </select>
+                        </div>
                         <ul className={styles.taskList}>
                             {filteredTasks.length === 0 ? (
-                                <p className={styles.noTasksText}>No tasks yet</p>
-                                
+                                <div className={styles.noTasksImageContainer}>
+                                    <img 
+                                        src={`${import.meta.env.BASE_URL}img/no-tasks.avif`} 
+                                        alt="No tasks yet" 
+                                        className={styles.noTasksImg}
+                                    />
+                                    <p className={styles.noTasksText}>No tasks yet</p>
+                                </div>
                             ) : (
                                 filteredTasks.map(task => (
                                     <li
@@ -118,8 +124,6 @@ const Tasks = ({ tasks, onCompleted }) => {
                                                 {getDaysLeft(task.dueDate)} days left
                                             </p>
                                         </div>
-
-
                                     </li>
                                 ))
                             )}

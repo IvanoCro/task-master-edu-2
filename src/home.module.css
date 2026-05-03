@@ -176,3 +176,15 @@
     text-align: center;
   }
 }
+
+@media (max-width: 768px) {
+  .mainContainer { padding-inline: 1rem; padding-bottom: 5rem; }
+  .mainTitle { font-size: 2.5rem; margin-top: 1rem; margin-bottom: 2rem; }
+  .subtitle { font-size: 0.95rem; }
+  .dailyMsgContainer { padding: 0.8rem; margin-bottom: 1.5rem; }
+  .statisticsContainer { min-height: auto; padding: 1rem; }
+  .taskFilterBtnContainer { gap: 1rem; }
+  .weeklyTasksContainer { margin: 0.5rem 0; }
+  .inProgressTasksContainer { flex-direction: column; gap: 1rem; }
+  .tasksContainer { margin: 0.5rem 0; }
+}

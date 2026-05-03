@@ -149,3 +149,13 @@
   }
 
 }
+
+@media (max-width: 768px) {
+  .breathingMainContainer { padding-inline: 1rem; padding-block: 1rem; }
+  .title { font-size: 2rem; padding-block: 0.5rem; margin-bottom: 2rem; }
+  .breathingSection { gap: 1.5rem; min-height: auto; padding-bottom: 5rem; }
+  .circle { width: 120px; height: 120px; border: 3px solid #6591F1; }
+  .btn { padding: 0.8rem 2rem; font-size: 0.9rem; }
+  .btnsContainer { gap: 1rem; margin: 1rem; }
+  .guideText, .phaseTime { font-size: 1.1rem; }
+}

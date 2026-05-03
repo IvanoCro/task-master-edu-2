@@ -88,3 +88,14 @@ input {
     margin:0 auto;
   }
 }
+
+@media (max-width: 768px) {
+  .wrapper { padding: 0.5rem; }
+  .creditsContainer { padding: 0.5rem; }
+  .title { font-size: 2rem; margin-top: 1rem; margin-bottom: 2rem; }
+  form { gap: 0.8rem; padding: 1rem; width: 100%; }
+  label { font-size: 1.3rem; }
+  input { padding: 0.8rem; font-size: 0.9rem; }
+  .changeBtn { width: 100%; font-size: 1.2rem; margin: 1rem auto; }
+  .backButton { bottom: 1rem; left: 1rem; font-size: 1rem; padding: 0.4rem 1rem; }
+}
