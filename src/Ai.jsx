@@ -9,6 +9,9 @@ export default function Ai({ tasks = [] }) {
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef(null);
 
+  const isDev = import.meta.env.DEV;
+  const apiKey = import.meta.env.VITE_GEMINI_KEY;
+
   // Funkcija za API poziv
   const streamAIResponse = async (prompt) => {
     setIsLoading(true);
@@ -23,20 +26,36 @@ export default function Ai({ tasks = [] }) {
     }]);
 
     try {
-      const response = await fetch('/api/chat', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ prompt }),
-      });
+      let aiResponse;
 
-      if (!response.ok) {
-        throw new Error(`API error: ${response.status}`);
+      if (isDev && apiKey) {
+        // DEV MODE: Koristi direktan API
+        const { GoogleGenerativeAI } = await import("@google/generative-ai");
+        const genAI = new GoogleGenerativeAI(apiKey);
+        const model = genAI.getGenerativeModel({ 
+          model: "gemini-2.5-flash",
+          allowInsecureBrowserUsage: true 
+        });
+
+        const result = await model.generateContent(prompt);
+        aiResponse = result.response.text();
+      } else {
+        // PRODUCTION: Koristi serverless funkciju
+        const response = await fetch('/api/chat', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ prompt }),
+        });
+
+        if (!response.ok) {
+          throw new Error(`API error: ${response.status}`);
+        }
+
+        const data = await response.json();
+        aiResponse = data.result || 'No response generated';
       }
-
-      const data = await response.json();
-      const aiResponse = data.result || 'No response generated';
 
       // 2. Ažuriramo poruku s odgovorom
       setMessages(prev => prev.map(msg => 
