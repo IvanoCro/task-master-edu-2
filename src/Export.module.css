@@ -1,0 +1,219 @@
+.wrapper {
+    padding: 1rem;
+}
+
+.exportContainer {
+    padding: .2rem 1rem;
+}
+
+.title {
+  font-size: 3rem;
+  color: #414347;
+  text-align: left;
+  margin-top: 2rem;
+  margin-bottom: 5rem;
+  z-index: 10;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.summaryBox {
+    background-color: #164cc0;
+    color: #fff;
+    padding: 2rem;
+    border-radius: 10px;
+}
+
+.summaryItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.summaryItem:last-child {
+    border-bottom: none;
+}
+
+.label {
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.value {
+    font-size: 1rem;
+    font-weight: 700;
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    min-width: 120px;
+    text-align: center;
+}
+
+.exportButtonsContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+}
+
+.exportBtn {
+    padding: 1rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    color: #fff;
+    transition: all 0.3s ease;
+}
+
+.csvBtn {
+    background-color: #164cc0;
+}
+
+.csvBtn:hover {
+    background-color: #1341a8;
+    transform: translateY(-2px);
+}
+
+.jsonBtn {
+    background-color: #2563EB;
+}
+
+.jsonBtn:hover {
+    background-color: #1d4ed8;
+    transform: translateY(-2px);
+}
+
+.reportBtn {
+    background-color: #7c3aed;
+}
+
+.reportBtn:hover {
+    background-color: #6d28d9;
+    transform: translateY(-2px);
+}
+
+.statusMessage {
+    padding: 1rem;
+    background-color: #4caf50;
+    color: #fff;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: 600;
+    animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.infoBox {
+    background-color: #f5f5f5;
+    padding: 1.5rem;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.infoBox p {
+    margin: 0;
+    color: #333;
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+
+.infoBox strong {
+    color: #164cc0;
+}
+
+.backButton {
+    position: fixed;
+    bottom: 2rem;
+    left: 2rem;
+
+    display: inline-block;
+    padding: .5rem 1.5rem;
+    background-color: #164cc0;
+    color: #fff;
+    border-radius: 10px;
+    text-decoration: none;
+    font-size: 1.2rem;
+    transition: .3s all;
+}
+
+.backButton:hover {
+    background-color: #1341a8;
+    transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+    .title {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    .summaryBox {
+        padding: 1.5rem;
+    }
+
+    .summaryItem {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+
+    .value {
+        width: 100%;
+    }
+
+    .exportButtonsContainer {
+        grid-template-columns: 1fr;
+    }
+
+    .exportBtn {
+        padding: 1.5rem;
+    }
+
+    .backButton {
+        bottom: 1rem;
+        left: 1rem;
+        padding: .4rem 1.2rem;
+        font-size: 1rem;
+    }
+
+    .infoBox {
+        padding: 1rem;
+    }
+
+    .infoBox p {
+        font-size: 0.9rem;
+    }
+}
+
+@media (min-width: 1260px) {
+    .summaryBox {
+        width: 70%;
+    }
+
+    .exportButtonsContainer {
+        width: 70%;
+    }
+
+    .infoBox {
+        width: 70%;
+    }
+}

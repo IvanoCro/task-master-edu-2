@@ -110,7 +110,8 @@ export default function Navigation() {
               currentPath === "/Settings" 
               || currentPath === "/AccountSetting" 
               || currentPath === "/Data"
-              || currentPath === "/Credits"  
+              || currentPath === "/Credits"
+              || currentPath === "/Export"  
               ? styles.active : ""
             }`}
           >

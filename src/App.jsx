@@ -15,6 +15,7 @@ import Credits from "./Credits.jsx";
 import Blog from "./Blog.jsx";
 import Plans from "./Plans.jsx";
 import Ai from "./Ai.jsx";
+import Export from "./Export.jsx";
 // styles
 import "./App.css";
 
@@ -281,6 +282,16 @@ function App() {
           path="/Ai"
           element={
             <Ai tasks={tasks} />
+          }
+        />
+
+        <Route
+          path="/Export"
+          element={
+            <Export 
+              tasks={tasks}
+              completedTasks={completedTasks}
+            />
           }
         />
 

@@ -22,6 +22,11 @@ const Settings = () => {
                         <h3>Data</h3>
                         <img className={styles.arrowImg} src={`${import.meta.env.BASE_URL}img/right-arrow.png`} alt="arrow pointing right" />
                     </Link>
+                    <Link className={styles.settingContainer} to="/Export">
+                        <img className={styles.settingImg} src={`${import.meta.env.BASE_URL}img/data-icon.png`} alt="export icon" />
+                        <h3>Export & Backup</h3>
+                        <img className={styles.arrowImg} src={`${import.meta.env.BASE_URL}img/right-arrow.png`} alt="arrow pointing right" />
+                    </Link>
                     <Link className={styles.settingContainer} to="/Credits">
                         <img className={styles.settingImg} src={`${import.meta.env.BASE_URL}img/credits-icon.png`} alt="credits icon" />
                         <h3>Credits</h3>
