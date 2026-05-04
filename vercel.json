@@ -1,0 +1,8 @@
+{
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "env": {
+    "VITE_GEMINI_KEY": "@vite_gemini_key"
+  },
+  "regions": ["iad1"]
+}

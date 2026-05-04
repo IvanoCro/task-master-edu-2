@@ -1,7 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import styles from './Ai.module.css';
 import Navigation from './navigation.jsx';
-import { GoogleGenerativeAI } from "@google/generative-ai";
 import ReactMarkdown from 'react-markdown';
 
 export default function Ai({ tasks = [] }) {
@@ -10,14 +9,7 @@ export default function Ai({ tasks = [] }) {
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef(null);
 
-  const genAI = new GoogleGenerativeAI(import.meta.env.VITE_GEMINI_KEY);
-  const model = genAI.getGenerativeModel({ 
-    model: "gemini-2.5-flash",
-    allowInsecureBrowserUsage: true 
-  });
-
-
-  // Funkcija za streaming odgovora
+  // Funkcija za API poziv
   const streamAIResponse = async (prompt) => {
     setIsLoading(true);
     
@@ -31,18 +23,25 @@ export default function Ai({ tasks = [] }) {
     }]);
 
     try {
-      const result = await model.generateContentStream(prompt);
-      
-      let fullText = '';
-      for await (const chunk of result.stream) {
-        const chunkText = chunk.text();
-        fullText += chunkText;
-        
-        // 2. Ažuriramo tekst te specifične poruke u stvarnom vremenu
-        setMessages(prev => prev.map(msg => 
-          msg.id === aiMessageId ? { ...msg, text: fullText } : msg
-        ));
+      const response = await fetch('/api/chat', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ prompt }),
+      });
+
+      if (!response.ok) {
+        throw new Error(`API error: ${response.status}`);
       }
+
+      const data = await response.json();
+      const aiResponse = data.result || 'No response generated';
+
+      // 2. Ažuriramo poruku s odgovorom
+      setMessages(prev => prev.map(msg => 
+        msg.id === aiMessageId ? { ...msg, text: aiResponse } : msg
+      ));
     } catch (error) {
       console.error("AI Error:", error);
       setMessages(prev => prev.map(msg => 
