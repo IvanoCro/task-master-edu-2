@@ -72,7 +72,7 @@
 
     .navText {
         display: inline;
-        font-size: 1.2rem; /* Malo smanjeno da ne izlazi iz okvira na nekim rezolucijama */
+        font-size: 1.5rem; 
         font-weight: 500;
         color: #182848;
     }

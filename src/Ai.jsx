@@ -16,38 +16,56 @@ export default function Ai({ tasks = [] }) {
     allowInsecureBrowserUsage: true 
   });
 
+
+  // Funkcija za streaming odgovora
+  const streamAIResponse = async (prompt) => {
+    setIsLoading(true);
+    
+    // 1. Dodajemo privremenu praznu AI poruku koju ćemo puniti
+    const aiMessageId = Date.now() + 1;
+    setMessages(prev => [...prev, {
+      id: aiMessageId,
+      text: '',
+      sender: 'ai',
+      timestamp: new Date()
+    }]);
+
+    try {
+      const result = await model.generateContentStream(prompt);
+      
+      let fullText = '';
+      for await (const chunk of result.stream) {
+        const chunkText = chunk.text();
+        fullText += chunkText;
+        
+        // 2. Ažuriramo tekst te specifične poruke u stvarnom vremenu
+        setMessages(prev => prev.map(msg => 
+          msg.id === aiMessageId ? { ...msg, text: fullText } : msg
+        ));
+      }
+    } catch (error) {
+      console.error("AI Error:", error);
+      setMessages(prev => prev.map(msg => 
+        msg.id === aiMessageId ? { ...msg, text: "Oprosti, došlo je do greške u komunikaciji." } : msg
+      ));
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   const handleAnalyzeMyTasks = async () => {
     if (!tasks || tasks.length === 0) {
       alert("Trenutno nemaš niti jedan zadatak za analizu!");
       return;
     }
 
-    setIsLoading(true);
-    
-    // Priprema podataka za AI
     const tasksSummary = tasks.map((t, i) => (
       `${i + 1}. NASLOV: ${t.title}\n   OPIS: ${t.description}\n   ROK: ${t.dueDate}`
     )).join('\n\n');
     
-    const prompt = `Ja sam korisnik aplikacije TaskMasterEdu. Ovo je moja trenutna lista zadataka:\n\n${tasksSummary}\n\nKao moj osobni asistent za produktivnost, analiziraj ove zadatke. Reci mi koji je najhitniji, procijeni težinu mojih obaveza i daj mi motivacijski savjet kako da sve završim na vrijeme.`;
+    const prompt = `Ja sam korisnik aplikacije TaskMasterEdu. Ovo je moja trenutna lista zadataka:\n\n${tasksSummary}\n\nAnaliziraj ove zadatke, reci mi koji je najhitniji i daj mi kratak savjet.`;
 
-    // UKLONJENO: setMessages s "Analiziram tvoju listu..." - AI direktno odgovara
-
-    try {
-      const result = await model.generateContent(prompt);
-      const response = await result.response;
-      
-      setMessages(prev => [...prev, {
-        id: Date.now() + 1,
-        text: response.text(),
-        sender: 'ai',
-        timestamp: new Date()
-      }]);
-    } catch (error) {
-      console.error("AI Error:", error);
-    } finally {
-      setIsLoading(false);
-    }
+    await streamAIResponse(prompt);
   };
 
   const handleSendMessage = async () => {
@@ -61,24 +79,10 @@ export default function Ai({ tasks = [] }) {
     };
 
     setMessages((prev) => [...prev, userMessage]);
+    const currentInput = inputValue;
     setInputValue('');
-    setIsLoading(true);
 
-    try {
-      const result = await model.generateContent(inputValue);
-      const response = await result.response;
-      
-      setMessages((prev) => [...prev, {
-        id: Date.now() + 1,
-        text: response.text(),
-        sender: 'ai',
-        timestamp: new Date(),
-      }]);
-    } catch (error) {
-      console.error("AI Error:", error);
-    } finally {
-      setIsLoading(false);
-    }
+    await streamAIResponse(currentInput);
   };
 
   return (
@@ -103,25 +107,22 @@ export default function Ai({ tasks = [] }) {
           <div className={styles.messagesArea}>
             {messages.length === 0 ? (
               <div className={styles.emptyState}>
-                {/* SLIKA UKLONJENA */}
-                <p>Klikni gumb iznad za analizu tvojih to-do zadataka ili me pitaj bilo što!</p>
+                <p>Klikni gumb iznad za analizu zadataka ili me pitaj bilo što!</p>
               </div>
             ) : (
               messages.map((message) => (
                 <div key={message.id} className={`${styles.message} ${styles[message.sender]}`}>
                   <div className={styles.messageContent}>
-                    <ReactMarkdown>{message.text}</ReactMarkdown>
+                    {/* Ako je tekst prazan, a isLoading je true, možemo prikazati kursor ili ostaviti prazno */}
+                    <ReactMarkdown>
+                      {message.text || (message.sender === 'ai' ? "..." : "")}
+                    </ReactMarkdown>
                   </div>
                   <span className={styles.timestamp}>
                     {message.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                   </span>
                 </div>
               ))
-            )}
-            {isLoading && (
-              <div className={`${styles.message} ${styles.ai}`}>
-                <div className={styles.loadingDots}><span></span><span></span><span></span></div>
-              </div>
             )}
             <div ref={messagesEndRef} />
           </div>
@@ -135,8 +136,12 @@ export default function Ai({ tasks = [] }) {
               className={styles.input}
               disabled={isLoading}
             />
-            <button onClick={handleSendMessage} className={styles.sendButton} disabled={isLoading || !inputValue.trim()}>
-              {isLoading ? "..." : "Send"}
+            <button 
+              onClick={handleSendMessage} 
+              className={styles.sendButton} 
+              disabled={isLoading || !inputValue.trim()}
+            >
+              Send
             </button>
           </div>
         </div>
