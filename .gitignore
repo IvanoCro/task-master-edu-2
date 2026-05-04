@@ -26,4 +26,4 @@ dist-ssr
 # API Keys and Secrets
 .env
 .env.local
-.env.*
+!.env.example
