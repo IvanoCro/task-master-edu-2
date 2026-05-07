@@ -1,64 +1,45 @@
 export default async function handler(req, res) {
-  // CORS headers
+  // CORS postavke
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 
-  if (req.method === 'OPTIONS') {
-    return res.status(200).end();
-  }
-
-  if (req.method !== 'POST') {
-    return res.status(405).json({ error: 'Method not allowed' });
-  }
+  if (req.method === 'OPTIONS') return res.status(200).end();
+  if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
 
   const { prompt } = req.body;
-  const apiKey = process.env.VITE_GEMINI_KEY;
+  // Vercel će ovo čitati iz Environment Variables koje si postavio na dashboardu
+  const apiKey = process.env.VITE_GEMINI_KEY; 
 
-  if (!apiKey) {
-    return res.status(500).json({ error: 'API key not configured' });
-  }
-
-  if (!prompt) {
-    return res.status(400).json({ error: 'Prompt is required' });
-  }
+  if (!apiKey) return res.status(500).json({ error: 'API ključ nije konfiguriran na serveru.' });
+  if (!prompt) return res.status(400).json({ error: 'Prompt nedostaje.' });
 
   try {
+    // Korištenje Gemini 2.5 Flash modela koji je potvrđen u tvojoj listi
     const response = await fetch(
       `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`,
       {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          contents: [
-            {
-              parts: [
-                {
-                  text: prompt,
-                },
-              ],
-            },
-          ],
+          contents: [{ parts: [{ text: prompt }] }],
         }),
       }
     );
 
+    const data = await response.json();
+
     if (!response.ok) {
-      const errorData = await response.json();
-      return res.status(response.status).json({
-        error: errorData.error?.message || 'API error',
+      return res.status(response.status).json({ 
+        error: data.error?.message || 'Greška pri pozivanju Gemini 2.5 API-ja' 
       });
     }
 
-    const data = await response.json();
-    const responseText =
-      data.candidates?.[0]?.content?.parts?.[0]?.text || 'No response generated';
+    const responseText = data.candidates?.[0]?.content?.parts?.[0]?.text || 'AI nije generirao odgovor.';
 
-    res.status(200).json({ result: responseText });
+    return res.status(200).json({ result: responseText });
   } catch (error) {
-    console.error('API Error:', error);
-    res.status(500).json({ error: error.message || 'Internal server error' });
+    console.error('Backend Error:', error);
+    return res.status(500).json({ error: 'Interna greška servera: ' + error.message });
   }
 }

@@ -53,7 +53,12 @@ export default function Ai({ tasks = [] }) {
           throw new Error(`API error: ${response.status}`);
         }
 
-        const data = await response.json();
+        const responseText = await response.text();
+        if (!responseText) {
+          throw new Error('API vratila je prazan odgovor');
+        }
+        
+        const data = JSON.parse(responseText);
         aiResponse = data.result || 'No response generated';
       }
 
@@ -111,7 +116,6 @@ export default function Ai({ tasks = [] }) {
           <div className={styles.chatHeader}>
             <div className={styles.headerInfo}>
               <h2>AI Assistant</h2>
-              <span className={styles.statusBadge}>Gemini 2.5 Active</span>
             </div>
             <button 
               className={styles.analyzeButton} 
