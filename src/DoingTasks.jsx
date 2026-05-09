@@ -1,4 +1,4 @@
-function DoingTasks({ tasks }) {
+function DoingTasks() {
 
 };
 

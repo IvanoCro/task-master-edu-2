@@ -4,7 +4,6 @@ import styles from "./Breathing.module.css";
 
 const BreathingExercise = () => {
   const [phase, setPhase] = useState(null);
-  const [guideText, setGuideText] = useState('Click "Start" to begin the exercise.');
   const [phaseTime, setPhaseTime] = useState("");
 
   const timerRef = useRef(null);
@@ -13,6 +12,23 @@ const BreathingExercise = () => {
   const breathInTimer = 4;   // seconds
   const breathHoldTimer = 2;
   const breathOutTimer = 6;
+
+  // Computed guide text and duration based on phase
+  const guideText = phase === "in" 
+    ? "Breathe in" 
+    : phase === "hold" 
+    ? "Hold your breath" 
+    : phase === "out" 
+    ? "Breathe out" 
+    : 'Click "Start" to begin the exercise.';
+
+  const duration = phase === "in" 
+    ? breathInTimer 
+    : phase === "hold" 
+    ? breathHoldTimer 
+    : phase === "out" 
+    ? breathOutTimer 
+    : 0;
 
   function clearAllTimers() {
     clearTimeout(timerRef.current);
@@ -27,7 +43,6 @@ const BreathingExercise = () => {
   function handleStopBreathing() {
     clearAllTimers();
     setPhase(null);
-    setGuideText('Click "Start" to begin the exercise.');
     setPhaseTime("");
   }
 
@@ -36,27 +51,15 @@ const BreathingExercise = () => {
 
     clearAllTimers();
 
-    let duration = 0;
-
     if (phase === "in") {
-      setGuideText("Breathe in");
-      duration = breathInTimer;
       timerRef.current = setTimeout(() => setPhase("hold"), duration * 1000);
-    }
-
-    if (phase === "hold") {
-      setGuideText("Hold your breath");
-      duration = breathHoldTimer;
+    } else if (phase === "hold") {
       timerRef.current = setTimeout(() => setPhase("out"), duration * 1000);
-    }
-
-    if (phase === "out") {
-      setGuideText("Breathe out");
-      duration = breathOutTimer;
+    } else if (phase === "out") {
       timerRef.current = setTimeout(() => setPhase("in"), duration * 1000);
     }
 
-    // countdown
+    // Set initial countdown time and countdown interval
     setPhaseTime(duration);
     countdownRef.current = setInterval(() => {
       setPhaseTime((prev) => {
@@ -69,7 +72,7 @@ const BreathingExercise = () => {
     }, 1000);
 
     return clearAllTimers;
-  }, [phase]);
+  }, [phase, duration]);
 
   return (
     <div className={styles.wrapper}>

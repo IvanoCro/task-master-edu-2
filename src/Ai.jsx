@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef } from 'react';
 import styles from './Ai.module.css';
 import Navigation from './Navigation.jsx';
 import ReactMarkdown from 'react-markdown';

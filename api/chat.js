@@ -1,3 +1,5 @@
+/* global process */
+
 export default async function handler(req, res) {
   // CORS postavke
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -9,7 +11,7 @@ export default async function handler(req, res) {
 
   const { prompt } = req.body;
   // Vercel će ovo čitati iz Environment Variables koje si postavio na dashboardu
-  const apiKey = process.env.VITE_GEMINI_KEY; 
+  const apiKey = process.env.GEMINI_KEY; 
 
   if (!apiKey) return res.status(500).json({ error: 'API ključ nije konfiguriran na serveru.' });
   if (!prompt) return res.status(400).json({ error: 'Prompt nedostaje.' });

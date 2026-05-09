@@ -1,6 +1,6 @@
 
 
-const Stats = ({ totalDoneTasks }) => {
+const Stats = () => {
   return (
     <div className={"graph"}>
     </div>
