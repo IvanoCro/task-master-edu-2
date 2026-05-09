@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 // components
-import Home from "./home.jsx";
+import Home from "./Home.jsx";
 import Tasks from "./toDoTasks.jsx";
 import DoingTasks from "./DoingTasks.jsx";
 import AddTaskForm from "./addTaskForm.jsx";
@@ -224,15 +224,6 @@ function App() {
             />
           }
         />
-
-        <Route
-        path="/Setup"
-        element={
-          <Setup
-            
-          />
-        }
-      />
 
         <Route
           path="/Settings"

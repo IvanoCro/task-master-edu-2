@@ -1,5 +1,5 @@
 import styles from './Settings.module.css';
-import Navigation from './navigation';
+import Navigation from './Navigation';
 import { Link} from 'react-router-dom';
 const Settings = () => {
     return (

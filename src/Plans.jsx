@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './Plans.module.css';
-import Navigation from './navigation.jsx';
+import Navigation from './Navigation.jsx';
 
 export default function Plans() {
   const plans = [

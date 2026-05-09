@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import TaskBtns from "./taskBtns";
 import styles from "./toDoTasks.module.css";
-import Navigation from "./navigation";
+import Navigation from "./Navigation";
 
 const DoneTasks = ({tasks, onRemoveTask}) => {
     const [selectedTaskId, setSelectedTaskId] = useState(null);

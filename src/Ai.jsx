@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import styles from './Ai.module.css';
-import Navigation from './navigation.jsx';
+import Navigation from './Navigation.jsx';
 import ReactMarkdown from 'react-markdown';
 
 export default function Ai({ tasks = [] }) {

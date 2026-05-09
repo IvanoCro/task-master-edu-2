@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styles from './Blog.module.css';
-import Navigation from './navigation.jsx';
+import Navigation from './Navigation.jsx';
 
 export default function Blog() {
   const articles = [

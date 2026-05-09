@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import Navigation from "./navigation";
+import Navigation from "./Navigation";
 import styles from "./addTaskForm.module.css";
 
 function AddTaskForm({ tasks, onSubmitTask, onUpdateTask }) {

@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import Navigation from "./navigation";
+import Navigation from "./Navigation";
 import styles from "./Breathing.module.css";
 
 const BreathingExercise = () => {
