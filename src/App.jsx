@@ -156,7 +156,7 @@ function App() {
   // ===============================
 
   return (
-    <BrowserRouter basename="/task-master-edu-2">
+    <BrowserRouter>
       <Routes>
 
         <Route
