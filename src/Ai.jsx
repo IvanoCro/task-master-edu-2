@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import styles from './Ai.module.css';
 import Navigation from './Navigation.jsx';
 import ReactMarkdown from 'react-markdown';
@@ -12,7 +12,11 @@ export default function Ai({ tasks = [] }) {
   const isDev = import.meta.env.DEV;
   const apiKey = import.meta.env.VITE_GEMINI_KEY;
 
-  // Funkcija za API poziv
+  // Automatsko skrolanje na dno poruka kada se doda nova poruka
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages]);
+
   const streamAIResponse = async (prompt) => {
     setIsLoading(true);
     
@@ -29,18 +33,18 @@ export default function Ai({ tasks = [] }) {
       let aiResponse;
 
       if (isDev && apiKey) {
-        // DEV MODE: Koristi direktan API
+        // DEV MODE: Koristi direktan API (samo ako imaš ključ u .env.local)
         const { GoogleGenerativeAI } = await import("@google/generative-ai");
         const genAI = new GoogleGenerativeAI(apiKey);
         const model = genAI.getGenerativeModel({ 
-          model: "gemini-2.5-flash",
+          model: "gemini-2.5-flash", 
           allowInsecureBrowserUsage: true 
         });
 
         const result = await model.generateContent(prompt);
         aiResponse = result.response.text();
       } else {
-        // PRODUCTION: Koristi serverless funkciju
+        // PRODUCTION: Koristi tvoj Vercel Backend (api/chat.js)
         const response = await fetch('/api/chat', {
           method: 'POST',
           headers: {
@@ -50,26 +54,24 @@ export default function Ai({ tasks = [] }) {
         });
 
         if (!response.ok) {
-          throw new Error(`API error: ${response.status}`);
+          const errorData = await response.json().catch(() => ({}));
+          throw new Error(errorData.error || `Greška na serveru: ${response.status}`);
         }
 
-        const responseText = await response.text();
-        if (!responseText) {
-          throw new Error('API vratila je prazan odgovor');
-        }
-        
-        const data = JSON.parse(responseText);
-        aiResponse = data.result || 'No response generated';
+        const data = await response.json();
+        // Uzimamo 'result' jer tvoj chat.js vraća { result: "tekst" }
+        aiResponse = data.result || 'AI nije uspio generirati odgovor.';
       }
 
-      // 2. Ažuriramo poruku s odgovorom
+      // 2. Ažuriramo poruku s dobivenim odgovorom
       setMessages(prev => prev.map(msg => 
         msg.id === aiMessageId ? { ...msg, text: aiResponse } : msg
       ));
+
     } catch (error) {
       console.error("AI Error:", error);
       setMessages(prev => prev.map(msg => 
-        msg.id === aiMessageId ? { ...msg, text: "Oprosti, došlo je do greške u komunikaciji." } : msg
+        msg.id === aiMessageId ? { ...msg, text: "Oprosti, došlo je do greške: " + error.message } : msg
       ));
     } finally {
       setIsLoading(false);
@@ -135,7 +137,6 @@ export default function Ai({ tasks = [] }) {
               messages.map((message) => (
                 <div key={message.id} className={`${styles.message} ${styles[message.sender]}`}>
                   <div className={styles.messageContent}>
-                    {/* Ako je tekst prazan, a isLoading je true, možemo prikazati kursor ili ostaviti prazno */}
                     <ReactMarkdown>
                       {message.text || (message.sender === 'ai' ? "..." : "")}
                     </ReactMarkdown>
