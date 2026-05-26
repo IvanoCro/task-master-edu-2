@@ -17,7 +17,7 @@
 
 .statisticsContainer {
   background-color: var(--accent);
-  color: #F8FAFC; /* Drži fiksni kontrast za tekst unutar glavne kartice */
+  color: #F8FAFC;
   padding: 1rem;
   border-radius: .6rem;
   min-height: 50vh;
@@ -42,16 +42,37 @@
 }
 
 .dailyMsgContainer {
-  background-color: var(--bg-card); /* Pozadina kartice (svijetla na defaultnoj temi) */
-  color: var(--text-main);          /* Tekst poruke je taman i čitljiv */
+  background-color: var(--bg-card); 
+  color: var(--text-main);      
   grid-area: daily;
   padding: .8rem;
   border-radius: .6rem;
   margin-bottom: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+.dailyMsgContainer:hover {
+  transform: translateY(-3px);
+  transition: transform 0.3s ease;
+}
+
+.quoteDecoration {
+  position: absolute;
+  bottom: 12px;
+  right: 20px;
+  font-size: 2.2rem;
+  opacity: 0.08;
+  color: var(--text-title);
+  pointer-events: none;
 }
 
 .dailyMsgContainer .subtitle {
-  color: var(--text-title); /* Fiksirano: koristi tamnu boju glavnog naslova za maksimalan kontrast */
+  color: var(--text-title);
   font-weight: 600;
 }
 
@@ -67,8 +88,26 @@
   animation: fadeSlideIn 0.3s ease-in-out;
 }
 
-.weeklyReviewContainer {
-  z-index: 10;
+.greetingContainer {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.streak {
+  background: linear-gradient(90deg, #f97316, #ea580c);
+  color: white;
+  padding: 0.5rem 1.1rem;
+  border-radius: 9999px;
+  font-size: 1.05rem;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(249, 115, 22, 0.3);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 0.5rem;
 }
 
 .inProgressTasksContainer {
@@ -96,12 +135,7 @@
   }
 }
 
-@media (max-width: 1260px) {
-  .tasksContainer {
-    width: 100%;
-  }
-}
-
+/* ================== DESKTOP ================== */
 @media (min-width: 1260px) {
   .wrapper {
     display: grid;
@@ -154,7 +188,7 @@
   }
 
   .weeklyTasksContainer .subtitle {
-    color: var(--text-title); /* Osigurano da i ovdje naslov bude taman i čitljiv */
+    color: var(--text-title);
   }
 
   .statisticsContainer {
@@ -174,7 +208,7 @@
   }
 
   .dailyMsgContainer .subtitle {
-    color: var(--text-title); /* Popravljeno: Prebrisana bijela boja na desktopu, sada je tamna i čitljiva */
+    color: var(--text-title);
   }
 
   .flexContainer {
@@ -185,33 +219,36 @@
     gap: 2.5rem;
   }
 
-  .quotesImgContainerLeft {
-    display: flex;
-    justify-content: flex-end;
-    align-items: flex-start;
-    transform: rotate(180deg);
-    margin: 0 0 1rem 0;
-  }
-
-  .quotesImgContainerRight {
-    display: flex;
-    justify-content: flex-end;
-    margin-top: 1rem;
-  }
-
   .dailyMsgTitle, .dailyMsg {
     text-align: center;
   }
 }
 
+/* ================== MOBILE ================== */
 @media (max-width: 768px) {
-  .mainContainer { padding-inline: 1rem; padding-bottom: 5rem; }
-  .mainTitle { font-size: 2.5rem; margin-top: 1rem; margin-bottom: 2rem; }
+  .mainContainer { 
+    padding-inline: 1rem; 
+    padding-bottom: 5rem; 
+  }
+  .mainTitle { 
+    font-size: 2.5rem; 
+    margin-top: 1rem; 
+    margin-bottom: 2rem; 
+  }
   .subtitle { font-size: 0.95rem; }
-  .dailyMsgContainer { padding: 0.8rem; margin-bottom: 1.5rem; }
-  .statisticsContainer { min-height: auto; padding: 1rem; }
+  .dailyMsgContainer { 
+    padding: 0.8rem; 
+    margin-bottom: 1.5rem; 
+  }
+  .statisticsContainer { 
+    min-height: auto; 
+    padding: 1rem; 
+  }
   .taskFilterBtnContainer { gap: 1rem; }
   .weeklyTasksContainer { margin: 0.5rem 0; }
-  .inProgressTasksContainer { flex-direction: column; gap: 1rem; }
+  .inProgressTasksContainer { 
+    flex-direction: column; 
+    gap: 1rem; 
+  }
   .tasksContainer { margin: 0.5rem 0; }
 }

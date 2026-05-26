@@ -44,7 +44,7 @@ const Statistics = ({ data }) => {
         </ResponsiveContainer>
       </div>
 
-      <div className={styles.bottomBox} />
+      
     </div>
   );
 };
