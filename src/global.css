@@ -1,0 +1,197 @@
+/* ========================================================
+   1. DEFAULT (Plava / Svijetla tema)
+   ======================================================== */
+:root, [data-theme="default"] {
+  --bg-wrapper: #c9c8c8;
+  --bg-desktop-wrapper: #c9c8c8;
+  --bg-main: linear-gradient(100deg, #F8FAFC 0%, #D4D4D5 100%);
+  --bg-main-desktop: #2563EB;
+  --bg-container: #2563EB;
+  --bg-card: #F8FAFC;
+  --bg-input: #ffffff;
+  --bg-nav-mobile: #ffffff;
+  --bg-nav-desktop: #EDEDED;
+  --text-main: #5B6270;
+  --text-title: #414347;
+  --text-title-desktop: #F8FAFC;
+  --text-subtitle: #414347d9;
+  --text-subtitle-accent: #fff;
+  --text-nav: #4b5563;
+  --text-nav-desktop: #182848;
+  --accent: #2563EB;
+  --nav-filter: invert(31%) sepia(94%) saturate(2259%) hue-rotate(213deg) brightness(96%) contrast(101%);
+  
+  /* Dodatne varijable za komponente */
+  --primary-color: #2563EB;
+  --primary-dark: #1e40af;
+  --primary-gradient: linear-gradient(135deg, #3061ca, #4f7df0);
+  --teal-btn: #0D9488;
+  --danger-color: #ff4d4d;
+  --border-color: #d1d5db;
+  --focus-ring: rgba(37, 99, 235, 0.15);
+}
+
+/* ========================================================
+   2. DEEP SLATE & VIOLET (Tvoja tema)
+   ======================================================== */
+[data-theme="violet"] {
+  --bg-wrapper: #020617;
+  --bg-desktop-wrapper: #020617;
+  --bg-main: linear-gradient(100deg, #0F172A 0%, #1E293B 100%);
+  --bg-main-desktop: #1E293B;
+  --bg-container: #334155;
+  --bg-card: #1e293b;
+  --bg-input: #334155;
+  --bg-nav-mobile: #0F172A;
+  --bg-nav-desktop: #1E293B;
+  --text-main: #94A3B8;
+  --text-title: #F8FAFC;
+  --text-title-desktop: #F8FAFC;
+  --text-subtitle: #CBD5E1;
+  --text-subtitle-accent: #6366F1;
+  --text-nav: #64748B;
+  --text-nav-desktop: #94A3B8;
+  --accent: #6366F1;
+  --nav-filter: invert(44%) sepia(91%) saturate(2327%) hue-rotate(221deg) brightness(96%) contrast(95%);
+  
+  /* Dodatne varijable za komponente */
+  --primary-color: #6366F1;
+  --primary-dark: #4f46e5;
+  --primary-gradient: linear-gradient(135deg, #4f46e5, #6366F1);
+  --teal-btn: #0d9488;
+  --danger-color: #ef4444;
+  --border-color: #475569;
+  --focus-ring: rgba(99, 102, 241, 0.3);
+}
+
+/* ========================================================
+   3. EMERALD CYBER (Zelena / Cyberpunk)
+   ======================================================== */
+[data-theme="emerald"] {
+  --bg-wrapper: #06140d;
+  --bg-desktop-wrapper: #06140d;
+  --bg-main: linear-gradient(100deg, #022c16 0%, #064e3b 100%);
+  --bg-main-desktop: #064e3b;
+  --bg-container: #042f1a;
+  --bg-card: #115e59;
+  --bg-input: #14b8a6;
+  --bg-nav-mobile: #022c16;
+  --bg-nav-desktop: #064e3b;
+  --text-main: #a7f3d0;
+  --text-title: #f0fdf4;
+  --text-title-desktop: #f0fdf4;
+  --text-subtitle: #34d399;
+  --text-subtitle-accent: #10b981;
+  --text-nav: #65a30d;
+  --text-nav-desktop: #a7f3d0;
+  --accent: #10b981;
+  --nav-filter: invert(62%) sepia(81%) saturate(463%) hue-rotate(107deg) brightness(91%) contrast(88%);
+  
+  /* Dodatne varijable za komponente */
+  --primary-color: #10b981;
+  --primary-dark: #047857;
+  --primary-gradient: linear-gradient(135deg, #047857, #10b981);
+  --teal-btn: #14b8a6;
+  --danger-color: #f43f5e;
+  --border-color: #059669;
+  --focus-ring: rgba(16, 185, 129, 0.4);
+}
+
+/* ========================================================
+   4. SUNSET CRIMSON (Tamno narančasta / Trula višnja)
+   ======================================================== */
+[data-theme="sunset"] {
+  --bg-wrapper: #120307;
+  --bg-desktop-wrapper: #120307;
+  --bg-main: linear-gradient(100deg, #1a0b10 0%, #2d0b14 100%);
+  --bg-main-desktop: #991b1b;
+  --bg-container: #450a0a;
+  --bg-card: #1f080c;
+  --bg-input: #3b0712;
+  --bg-nav-mobile: #1a0b10;
+  --bg-nav-desktop: #2d0b14;
+  --text-main: #fca5a5;
+  --text-title: #fef2f2;
+  --text-title-desktop: #fef2f2;
+  --text-subtitle: #f87171;
+  --text-subtitle-accent: #f97316;
+  --text-nav: #b91c1c;
+  --text-nav-desktop: #fca5a5;
+  --accent: #f97316;
+  --nav-filter: invert(53%) sepia(93%) saturate(2651%) hue-rotate(360deg) brightness(101%) contrast(96%);
+
+  /* Dodatne varijable za komponente */
+  --primary-color: #f97316;
+  --primary-dark: #ea580c;
+  --primary-gradient: linear-gradient(135deg, #dc2626, #f97316);
+  --teal-btn: #e11d48;
+  --danger-color: #ef4444;
+  --border-color: #7f1d1d;
+  --focus-ring: rgba(249, 115, 22, 0.35);
+}
+
+/* ========================================================
+   5. NORDIC FROST (Minimalistička hladno-svijetla)
+   ======================================================== */
+[data-theme="nordic"] {
+  --bg-wrapper: #d8dee9;
+  --bg-desktop-wrapper: #d8dee9;
+  --bg-main: linear-gradient(100deg, #e5e9f0 0%, #eceff4 100%);
+  --bg-main-desktop: #4c566a;
+  --bg-container: #434c5e;
+  --bg-card: #f8fafc;
+  --bg-input: #ffffff;
+  --bg-nav-mobile: #ffffff;
+  --bg-nav-desktop: #e5e9f0;
+  --text-main: #4c566a;
+  --text-title: #2e3440;
+  --text-title-desktop: #eceff4;
+  --text-subtitle: #4c566aab;
+  --text-subtitle-accent: #88c0d0;
+  --text-nav: #4c566a;
+  --text-nav-desktop: #2e3440;
+  --accent: #81a1c1;
+  --nav-filter: invert(63%) sepia(13%) saturate(915%) hue-rotate(172deg) brightness(91%) contrast(87%);
+
+  /* Dodatne varijable za komponente */
+  --primary-color: #81a1c1;
+  --primary-dark: #5e81ac;
+  --primary-gradient: linear-gradient(135deg, #5e81ac, #81a1c1);
+  --teal-btn: #8fbcbb;
+  --danger-color: #bf616a;
+  --border-color: #d8dee9;
+  --focus-ring: rgba(129, 161, 193, 0.25);
+}
+
+/* ========================================================
+   6. RETRO NEON (Synthwave / Cyberpunk Magenta)
+   ======================================================== */
+[data-theme="retro"] {
+  --bg-wrapper: #070314;
+  --bg-desktop-wrapper: #070314;
+  --bg-main: linear-gradient(100deg, #0b051f 0%, #17072b 100%);
+  --bg-main-desktop: #ff007f;
+  --bg-container: #240935;
+  --bg-card: #0f0720;
+  --bg-input: #1f0b3a;
+  --bg-nav-mobile: #0b051f;
+  --bg-nav-desktop: #17072b;
+  --text-main: #bc95ff;
+  --text-title: #ff007f;
+  --text-title-desktop: #00f0ff;
+  --text-subtitle: #00f0ff;
+  --text-subtitle-accent: #ff007f;
+  --text-nav: #9d4edd;
+  --text-nav-desktop: #00f0ff;
+  --accent: #ff007f;
+  --nav-filter: invert(11%) sepia(100%) saturate(7402%) hue-rotate(328deg) brightness(101%) contrast(107%);
+
+  /* Dodatne varijable za komponente */
+  --primary-color: #ff007f;
+  --primary-dark: #cc0066;
+  --primary-gradient: linear-gradient(135deg, #bc00dd, #ff007f);
+  --teal-btn: #00f0ff;
+  --danger-color: #ff3333;
+  --border-color: #3c165a;
+  --focus-ring: rgba(255, 0, 127, 0.4);
+}

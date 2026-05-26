@@ -9,11 +9,11 @@ const BreathingExercise = () => {
   const timerRef = useRef(null);
   const countdownRef = useRef(null);
 
-  const breathInTimer = 4;   // seconds
+  const breathInTimer = 4;  
   const breathHoldTimer = 2;
   const breathOutTimer = 6;
 
-  // Computed guide text and duration based on phase
+  
   const guideText = phase === "in" 
     ? "Breathe in" 
     : phase === "hold" 
@@ -59,7 +59,6 @@ const BreathingExercise = () => {
       timerRef.current = setTimeout(() => setPhase("in"), duration * 1000);
     }
 
-    // Set initial countdown time and countdown interval
     setPhaseTime(duration);
     countdownRef.current = setInterval(() => {
       setPhaseTime((prev) => {

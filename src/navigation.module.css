@@ -4,11 +4,9 @@
     left: 0;
     width: 100%;
     z-index: 1000;
-    background-color: #ffffff; /* Bijela pozadina za čišći izgled */
-    /* Padding postavljen da ne bude zgurano uz rubove */
+    background-color: var(--bg-nav-mobile);
     padding: 0.75rem 0; 
     box-shadow: 0 -2px 15px rgba(0, 0, 0, 0.08);
-    /* Podrška za novije mobitele s "notchom" na dnu */
     padding-bottom: max(0.75rem, env(safe-area-inset-bottom));
 }
 
@@ -28,28 +26,26 @@
     align-items: center;
     justify-content: center;
     text-decoration: none;
-    color: #4b5563; /* Malo mekša siva boja */
+    color: var(--text-nav);
     transition: all 0.2s ease;
-    /* Dajemo svakom linku dovoljno prostora za dodir */
     flex: 1; 
     min-height: 44px;
 }
 
 .navIcon {
-    width: 24px; /* Standardna veličina za mobilne ikone */
+    width: 24px;
     height: 24px;
     transition: transform 0.2s ease;
 }
 
-/* Aktivno stanje na mobitelu - vizualni feedback */
+/* Aktivno stanje na mobitelu - vizualni feedback preko varijable filtera */
 .navLink.active .navIcon {
     transform: translateY(-3px);
-    filter: invert(31%) sepia(94%) saturate(2259%) hue-rotate(213deg) brightness(96%) contrast(101%);
-    /* Ako koristiš slike kao ikone, filter ih boji u plavo */
+    filter: var(--nav-filter);
 }
 
 .navText {
-    display: none; /* Ostaje skriveno na mobitelu prema pravilu */
+    display: none;
 }
 
 /* --- DESKTOP LAYOUT (1260px+) --- */
@@ -58,7 +54,7 @@
         position: relative;
         max-width: fit-content;
         height: 94.5%;
-        background-color: #EDEDED;
+        background-color: var(--bg-nav-desktop);
         border-radius: 20px;
         padding: 1rem 0;
         padding-right: 0;
@@ -74,7 +70,7 @@
         display: inline;
         font-size: 1.5rem; 
         font-weight: 500;
-        color: #182848;
+        color: var(--text-nav-desktop);
     }
 
     .navList {
@@ -91,11 +87,11 @@
         padding: 12px 20px;
         justify-content: flex-start;
         border-left: 4px solid transparent;
-        flex: none; /* Isključujemo mobilni flex:1 */
+        flex: none;
     }
 
     .navLink.active {
-        background-color: #2563eb; 
+        background-color: var(--accent); 
         color: #fff;              
         border-radius: 8px 0px 0px 8px; 
     }

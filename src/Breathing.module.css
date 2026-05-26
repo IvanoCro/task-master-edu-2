@@ -1,12 +1,12 @@
-.breathingMainContainer{
+.breathingMainContainer {
   background: #F8FAFC;
-  background: linear-gradient(100deg, #F8FAFC 0%, #D4D4D5 100%);
+  background: var(--bg-main, linear-gradient(100deg, #F8FAFC 0%, #D4D4D5 100%));
   padding-inline: 1.5rem;
 }
 
 .title {
   font-size: 3rem;
-  color: #5B6270;
+  color: var(--text-muted, #5B6270);
   text-align: left;
   padding-block: 1rem;
   margin-bottom: 5rem;
@@ -25,7 +25,7 @@
   width: 150px;
   height: 150px;
   border-radius: 50%;
-  background: #2563EB;
+  background: var(--primary-color, #2563EB);
   border: 4px solid #6591F1;
   box-shadow: 0px 9px 50px 0px rgba(0,0,0,0.55);
   -webkit-box-shadow: 0px 9px 50px 0px rgba(0,0,0,0.55);
@@ -39,7 +39,7 @@
   font-size: 1rem;
   border: none;
   border-radius: 8px;
-  background-color: #164cc0;
+  background-color: var(--primary-dark, #164cc0);
   font-weight: bold;
   color: #fff;
   cursor: pointer;
@@ -54,11 +54,11 @@
 }
 
 .guideText, .phaseTime {
-  color: #5B6270;
+  color: var(--text-muted, #5B6270);
   font-size: 1.5rem;
 }
 
-.phaseTime{
+.phaseTime {
   opacity: 80%;
 }
 
@@ -125,7 +125,7 @@
     grid-template-columns: 1fr 4fr;
     grid-template-areas: "nav main";
     gap: 2rem;
-    background-color:#c9c8c8;
+    background-color: var(--bg-desktop-wrapper, #c9c8c8);
     padding: 2rem;
   }
 

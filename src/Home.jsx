@@ -2,6 +2,7 @@ import styles from './home.module.css';
 import TaskFilterBtn from "./taskFilterBtn.jsx";
 import Navigation from './Navigation.jsx';
 import Statistics from './Statistics.jsx';
+
 export default function Home({completedTasksCount, toDoTaskCount, userName, statisticsData}) {
   return (
   <div className={styles.wrapper}>

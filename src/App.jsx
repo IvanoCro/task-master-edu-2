@@ -16,8 +16,10 @@ import Blog from "./Blog.jsx";
 import Plans from "./Plans.jsx";
 import Ai from "./Ai.jsx";
 import Export from "./Export.jsx";
+import Themes from "./Themes.jsx";
 // styles
 import "./App.css";
+import "./global.css";
 
 function App() {
   // ===============================
@@ -108,7 +110,7 @@ function App() {
   const toDoTasksCount = tasks.length;
   const completedTasksCount = completedTasks.length;
 
-  // Generiraj zadnjih N dana (3 za mobitel, 7 za desktop)
+ 
   const getLastNDays = (n) => {
     const days = [];
     for (let i = n - 1; i >= 0; i--) {
@@ -122,7 +124,7 @@ function App() {
   const daysToShow = isMobile ? 3 : 7;
   const lastNDays = getLastNDays(daysToShow);
 
-  // Kombiniraj sve taskove (aktivne i završene)
+ 
   const allTasks = [...tasks, ...completedTasks];
 
   const statisticsData = lastNDays.map(dayDate => {
@@ -283,6 +285,13 @@ function App() {
               tasks={tasks}
               completedTasks={completedTasks}
             />
+          }
+        />
+
+        <Route
+          path="/Themes"
+          element={
+            <Themes />
           }
         />
 

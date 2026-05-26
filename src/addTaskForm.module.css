@@ -8,7 +8,7 @@
   display: flex;
   padding: 0;
   margin-bottom: 1.5rem;
-  color: #2b2f36;
+  color: var(--text-main, #2b2f36);
   font-size: 2rem;
   z-index: 10;
 }
@@ -16,7 +16,7 @@
 /* ================= MAIN CONTAINER ================= */
 .addTaskFormContainer {
   min-height: 100vh;
-  background: linear-gradient(100deg, #F8FAFC 0%, #D4D4D5 100%);
+  background: var(--bg-main, linear-gradient(100deg, #F8FAFC 0%, #D4D4D5 100%));
   display: flex;
   flex-direction: column;
   padding: 1.5rem;
@@ -31,8 +31,8 @@
   margin: auto auto;
   padding: 2.5rem;
 
-  background-color: #ffffff;
-  color: #2b2f36;
+  background-color: var(--bg-card, #ffffff);
+  color: var(--text-main, #2b2f36);
 
   border-radius: 16px;
   min-width: 80%;
@@ -57,7 +57,7 @@
 .inputTitle {
   font-size: 0.95rem;
   font-weight: 600;
-  color: #4b5563;
+  color: var(--text-muted, #4b5563);
   margin-bottom: 0.3rem;
 }
 
@@ -68,8 +68,9 @@
   font-size: 1rem;
 
   border-radius: 8px;
-  border: 1px solid #d1d5db;
-  background-color: #f9fafb;
+  border: 1px solid var(--border-color, #d1d5db);
+  background-color: var(--bg-input, #f9fafb);
+  color: var(--text-main, #2b2f36);
 
   transition:
     border-color 0.2s ease,
@@ -79,9 +80,9 @@
 
 .input:focus {
   outline: none;
-  border-color: #3061ca;
-  box-shadow: 0 0 0 3px rgba(48, 97, 202, 0.15);
-  background-color: #ffffff;
+  border-color: var(--primary-color, #3061ca);
+  box-shadow: 0 0 0 3px var(--focus-ring, rgba(48, 97, 202, 0.15));
+  background-color: var(--bg-card, #ffffff);
 }
 
 textarea.input {
@@ -118,7 +119,7 @@ textarea.input {
   font-size: 1rem;
   font-weight: 600;
 
-  background: linear-gradient(135deg, #3061ca, #4f7df0);
+  background: var(--primary-gradient, linear-gradient(135deg, #3061ca, #4f7df0));
   color: #ffffff;
 
   border: none;
@@ -133,7 +134,7 @@ textarea.input {
 
 .submitButton:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(48, 97, 202, 0.35);
+  box-shadow: 0 8px 20px var(--btn-shadow, rgba(48, 97, 202, 0.35));
   opacity: 0.95;
 }
 
@@ -161,7 +162,7 @@ textarea.input {
     grid-template-columns: 1fr 4fr;
     grid-template-areas: "nav main";
     gap: 2rem;
-    background-color: #c9c8c8;
+    background-color: var(--bg-desktop-wrapper, #c9c8c8);
     padding: 2rem;
   }
 

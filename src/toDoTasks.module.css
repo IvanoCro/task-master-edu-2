@@ -1,6 +1,6 @@
 .tasksWrapper {
     background: #F8FAFC;
-    background: linear-gradient(100deg, #F8FAFC 0%, #D4D4D5 100%);
+    background: var(--bg-main, linear-gradient(100deg, #F8FAFC 0%, #D4D4D5 100%));
 }
 .mainContent {
     min-height: 100vh;
@@ -17,7 +17,7 @@
 }
 .title {
     font-size: 2.5rem;
-     color: #414347;
+    color: var(--text-title, #414347);
     font-weight: bold;
     z-index: 10;
 }
@@ -30,7 +30,7 @@
     margin-bottom: 2rem;
 }
 .tasksContainer {
-    background-color: #2563EB;
+    background-color: var(--primary-color, #2563EB);
     border-radius: 22px;
     padding: .2rem;
     overflow-y: scroll;
@@ -41,7 +41,8 @@
 }
 .taskListItem {
     margin: 2rem 0;
-    background-color: #fff;
+    background-color: var(--bg-card, #fff);
+    color: var(--text-main, #2b2f36);
     padding: 1rem;
     border-radius: 22px;
     text-wrap: wrap;
@@ -60,14 +61,14 @@
     justify-content: space-between;
 }
 .daysLeftText {
-    color: #5b6270ca;
+    color: var(--text-muted, #5b6270ca);
 }
 .editPenImg {
     max-width: 20px;
     cursor: pointer;
 }
 .exitBtn {
-    background-color: #ff4d4d;
+    background-color: var(--danger-color, #ff4d4d);
     border: none;
     color: #fff;
     padding: 0.5rem 1rem;
@@ -76,14 +77,15 @@
 }
 .filterContainer {
     padding: 1rem;
-  }
+}
 .filterSelect {
     padding: 0.5rem;
     border-radius: 12px;
     border: none;
     font-size: 1rem;
     margin: .3rem 0 1rem 0;
-    background-color: #fff;
+    background-color: var(--bg-input, #fff);
+    color: var(--text-main, #2b2f36);
 }
 .noTasksText {
     color: #fff;
@@ -106,7 +108,7 @@
     grid-template-columns: 1fr 4fr;
     grid-template-areas: "nav main";
     gap: 2rem;
-    background-color:#c9c8c8;
+    background-color: var(--bg-desktop-wrapper, #c9c8c8);
     padding: 2rem;
     height: 100vh;
   }
@@ -131,7 +133,6 @@
   .tasksContainer {                
     display: flex;
     flex-direction: column;
-     
   }
   .taskList {
     display: grid;
@@ -147,13 +148,13 @@
   }
   .taskDescription {
     margin-bottom: 2rem;
-}
-.taskConfigureBtnsContainer {
+  }
+  .taskConfigureBtnsContainer {
     margin-top: auto;
-}
-.taskTitle {
+  }
+  .taskTitle {
     font-size: 1.5rem;
-}
+  }
 }
 
 .noTasksImageContainer {

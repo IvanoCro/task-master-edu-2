@@ -4,51 +4,55 @@
   box-sizing: border-box;
 }
 
-.mainContainer{
+.mainContainer {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  color: #5B6270;
+  color: var(--text-main);
   background: transparent;
   padding-inline: 1.5rem;
   overflow: hidden;
-  background: #F8FAFC;
-  background: linear-gradient(100deg, #F8FAFC 0%, #D4D4D5 100%);
+  background: var(--bg-main);
 }
+
 .statisticsContainer {
-  background-color: #2563EB;
-  color: #F8FAFC;
+  background-color: var(--accent);
+  color: #F8FAFC; /* Drži fiksni kontrast za tekst unutar glavne kartice */
   padding: 1rem;
   border-radius: .6rem;
   min-height: 50vh;
 }
+
 .statisticsContainer:hover {
-    transform: translateY(-2px);
-    cursor: pointer;
+  transform: translateY(-2px);
+  cursor: pointer;
 }
+
 .mainTitle {
   font-size: 4rem;
-   color: #414347;
+  color: var(--text-title);
   text-align: left;
   margin-top: 2rem;
   margin-bottom: 5rem;
   z-index: 10;
 }
 
-.subtitle{
-  color: #414347d9;
+.subtitle {
+  color: var(--text-subtitle);
 }
+
 .dailyMsgContainer {
-  background-color: #2563EB;
-  color: #F8FAFC;
+  background-color: var(--bg-card); /* Pozadina kartice (svijetla na defaultnoj temi) */
+  color: var(--text-main);          /* Tekst poruke je taman i čitljiv */
   grid-area: daily;
   padding: .8rem;
   border-radius: .6rem;
   margin-bottom: 2rem;
 }
-.dailyMsgContainer .subtitle{
-  color: #fff;
-  
+
+.dailyMsgContainer .subtitle {
+  color: var(--text-title); /* Fiksirano: koristi tamnu boju glavnog naslova za maksimalan kontrast */
+  font-weight: 600;
 }
 
 .taskFilterBtnContainer {
@@ -56,26 +60,31 @@
   flex-direction: column;
   align-items: center;
 }
-.weeklyTasksContainer{
+
+.weeklyTasksContainer {
   display: flex;
   flex-direction: column;
   animation: fadeSlideIn 0.3s ease-in-out;
-  
 }
+
 .weeklyReviewContainer {
   z-index: 10;
 }
+
 .inProgressTasksContainer {
   display: flex;
   gap: 2rem;
 }
+
 .tasksContainer {
-  
   margin: 1rem 0;
 }
+
 .dailyMsg {
   margin-top: 1rem;
+  color: var(--text-main);
 }
+
 @keyframes fadeSlideIn {
   from {
     opacity: 0;
@@ -87,7 +96,7 @@
   }
 }
 
-@media (max-width: 1260px){
+@media (max-width: 1260px) {
   .tasksContainer {
     width: 100%;
   }
@@ -99,15 +108,17 @@
     grid-template-columns: 1fr 4fr;
     grid-template-areas: "nav main";
     gap: 2rem;
-    background-color:#c9c8c8;
+    background-color: var(--bg-wrapper);
     padding: 2rem;
   }
+
   .navContainer {
     grid-area: nav;
     height: 100dvh;
     position: sticky; 
     top: 0;
   }
+
   .mainContainer {
     grid-area: main;
     padding: 2rem;
@@ -120,39 +131,52 @@
                          "tasks stats stats stats";
     grid-template-rows: 1fr 1fr 1fr;
     gap: 1.5rem;
-    background: #2563EB;
-   
+    background: var(--bg-main-desktop);
   }
+
   .subtitle {
-    color: #F8FAFC;
+    color: var(--text-main);
   }
+
   .mainTitle {
     grid-area: title;
     width: 100%;
-    color: #F8FAFC;
+    color: var(--text-title-desktop);
     margin-top: 1rem;
     margin-bottom: 0rem;
   }
-  .weeklyTasksContainer{
+
+  .weeklyTasksContainer {
     grid-area: tasks;
-    background-color: #F8FAFC;
+    background-color: var(--bg-card);
     border-radius: 13px;
     padding: 1rem;
   }
-  .weeklyTasksContainer .subtitle{
-    color: #434343;
+
+  .weeklyTasksContainer .subtitle {
+    color: var(--text-title); /* Osigurano da i ovdje naslov bude taman i čitljiv */
   }
+
   .statisticsContainer {
     grid-area: stats;
     width: 100%;
+    background-color: var(--accent);
   }
+
   .container {
-    background-color: #F8FAFC;
-    color: #434343;
+    background-color: var(--bg-card);
+    color: var(--text-main);
   }
-  .dailyMsgContainer .subtitle{
-    color: #434343;
-}
+
+  .dailyMsgContainer {
+    background-color: var(--bg-card);
+    color: var(--text-main);
+  }
+
+  .dailyMsgContainer .subtitle {
+    color: var(--text-title); /* Popravljeno: Prebrisana bijela boja na desktopu, sada je tamna i čitljiva */
+  }
+
   .flexContainer {
     height: 100%;
     display: flex;
@@ -160,18 +184,21 @@
     align-items: center;
     gap: 2.5rem;
   }
+
   .quotesImgContainerLeft {
     display: flex;
     justify-content: flex-end;
     align-items: flex-start;
     transform: rotate(180deg);
-    margin:0 0 1rem 0;
+    margin: 0 0 1rem 0;
   }
+
   .quotesImgContainerRight {
     display: flex;
     justify-content: flex-end;
     margin-top: 1rem;
   }
+
   .dailyMsgTitle, .dailyMsg {
     text-align: center;
   }

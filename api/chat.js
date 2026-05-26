@@ -1,7 +1,6 @@
-/* global process */
+
 
 export default async function handler(req, res) {
-  // CORS postavke
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
@@ -10,14 +9,12 @@ export default async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
 
   const { prompt } = req.body;
-  // Vercel će ovo čitati iz Environment Variables koje si postavio na dashboardu
   const apiKey = process.env.GEMINI_KEY; 
 
   if (!apiKey) return res.status(500).json({ error: 'API ključ nije konfiguriran na serveru.' });
   if (!prompt) return res.status(400).json({ error: 'Prompt nedostaje.' });
 
   try {
-    // Korištenje Gemini 2.5 Flash modela koji je potvrđen u tvojoj listi
     const response = await fetch(
       `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`,
       {

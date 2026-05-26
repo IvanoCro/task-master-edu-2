@@ -12,15 +12,12 @@ export default function Ai({ tasks = [] }) {
   const isDev = import.meta.env.DEV;
   const apiKey = import.meta.env.VITE_GEMINI_KEY;
 
-  // Automatsko skrolanje na dno poruka kada se doda nova poruka
-  useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [messages]);
+ 
 
   const streamAIResponse = async (prompt) => {
     setIsLoading(true);
     
-    // 1. Dodajemo privremenu praznu AI poruku koju ćemo puniti
+   
     const aiMessageId = Date.now() + 1;
     setMessages(prev => [...prev, {
       id: aiMessageId,
@@ -33,7 +30,7 @@ export default function Ai({ tasks = [] }) {
       let aiResponse;
 
       if (isDev && apiKey) {
-        // DEV MODE: Koristi direktan API (samo ako imaš ključ u .env.local)
+       
         const { GoogleGenerativeAI } = await import("@google/generative-ai");
         const genAI = new GoogleGenerativeAI(apiKey);
         const model = genAI.getGenerativeModel({ 
@@ -59,11 +56,11 @@ export default function Ai({ tasks = [] }) {
         }
 
         const data = await response.json();
-        // Uzimamo 'result' jer tvoj chat.js vraća { result: "tekst" }
+        
         aiResponse = data.result || 'AI nije uspio generirati odgovor.';
       }
 
-      // 2. Ažuriramo poruku s dobivenim odgovorom
+     
       setMessages(prev => prev.map(msg => 
         msg.id === aiMessageId ? { ...msg, text: aiResponse } : msg
       ));

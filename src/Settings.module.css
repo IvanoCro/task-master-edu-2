@@ -1,16 +1,18 @@
 .settingsContainer {
     padding: .2rem 2rem;
 }
+
 .title {
   font-size: 3rem;
-  color: #414347;
+  color: var(--text-title);
   text-align: left;
   margin-top: 2rem;
   margin-bottom: 5rem;
   z-index: 10;
 }
+
 .settingContainer {
-    background-color: #2563EB;
+    background-color: var(--bg-container);
     display: flex;
     align-items: center;
     padding: 1rem;
@@ -21,22 +23,26 @@
     border-radius: 15px;
     text-decoration: none;
 }
+
 .settingContainer:hover {
-    background-color: #4871cb;
+    background-color: var(--accent);
+    opacity: 0.9;
 }
+
+/* Slike prate boju ovisno o temi i kontrastu */
 .arrowImg {
     width: 40px;
     height: 40px;
     margin-left: auto;
-    filter: invert(1);
+    filter: var(--icon-filter, invert(1));
 }
+
 .settingImg {
     width: 40px;
     height: 40px;
     margin-right: 1rem;
-    filter: invert(1);
+    filter: var(--icon-filter, invert(1));
 }
-
 
 @media (min-width: 1260px) {
   .wrapper {
@@ -44,33 +50,40 @@
     grid-template-columns: 1fr 4fr;
     grid-template-areas: "nav main";
     gap: 2rem;
-    background-color:#c9c8c8;
+    background-color: var(--bg-wrapper);
     padding: 2rem;
   }
+
   .settingsContainer {
-    background-color: #164cc0;
+    background-color: var(--bg-main-desktop);
     border-radius: 12px;
     height: 94vh;
   }
+
   .title {
-    color: #fff;
+    color: var(--text-title-desktop);
   }
-  .settingContainer{
-    background-color: #fff;
-    color: #212121d9;
+
+  .settingContainer {
+    background-color: var(--bg-card);
+    color: var(--text-main);
   }
+
   .settingContainer:hover {
-    background-color: #d5d5d5;
-}
+    background-color: var(--bg-wrapper);
+  }
+
   .settingImg, .arrowImg {
     filter: none;
   }
+
   .navContainer {
     grid-area: nav;
     height: 100vh;
     position: sticky; 
     top: 0;
   }
+
   .mainContainer {
     grid-area: main;
     padding: 2rem;

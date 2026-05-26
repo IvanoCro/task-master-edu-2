@@ -1,5 +1,5 @@
 .addTaskBtn {
-    background-color: #0D9488;
+    background-color: var(--emerald-btn, #0D9488);
     border: none;
     color: white;
     padding: 10px 20px;
@@ -10,8 +10,9 @@
     cursor: pointer;
     border-radius: .7rem;
 }
+
 .removeTaskBtn {
-    background-color: #830d0d;
+    background-color: var(--danger-btn, #830d0d);
     border: none;
     color: white;
     padding: 10px 20px;
@@ -33,7 +34,6 @@
         display: flex;
         justify-content: space-between;
     }
-
 }
 
 @media (max-width: 768px) {

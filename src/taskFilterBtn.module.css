@@ -1,5 +1,5 @@
 .taskFilterBtn {
-    background-color: #2563EB;
+    background-color: var(--bg-container);
     color: #fff;
     border: none;
     width: 100%;
@@ -12,37 +12,36 @@
     padding: 1.5rem;
     transition: .3s all;
 }
+
 .taskFilterBtn:hover {
-    background-color: #164cc0;
+    background-color: var(--accent);
     transform: translateY(-2px);
     cursor: pointer;
 }
+
 .navArrow {
     width: 16px;
 }
 
 @media (min-width: 1260px){
-    .taskFilterBtn{
-        background-color: #F8FAFC;
-        color: #164cc0;
-        color: #434343;
+    .taskFilterBtn {
+        background-color: var(--bg-wrapper);
+        color: var(--text-title);
         width: 260px;
         height: 150px;
         justify-content: center;
         gap: 1rem;
         align-items: center;
         font-size: 1.5rem;
-        background-color: #D9D9D9;
     }
-    .taskFilterBtn:hover{
-        background-color: #a2a1a1;
-        color: #171717;
+    .taskFilterBtn:hover {
+        background-color: var(--bg-container);
+        color: #fff;
     }
-
 }
 
 @media (max-width: 768px) {
   .taskFilterBtn { font-size: 1rem; padding: 1rem; border-radius: 10px; width: 100%; height: auto; }
-  .taskFilterBtn:hover { background-color: #1e3a8a; }
+  .taskFilterBtn:hover { background-color: var(--accent); }
   .navArrow { width: 14px; }
 }

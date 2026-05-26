@@ -1,20 +1,23 @@
-/* Ai.module.css */
+/* ================= RESET / BASE ================= */
+* {
+  box-sizing: border-box;
+}
 
 .wrapper {
   padding: 0;
   margin: 0;
-  /* Na mobitelu dopuštamo skrolanje stranice ako navigacija i chat ne stanu zajedno */
 }
 
 .mainContainer {
   display: flex;
 }
 
+/* ================= CHAT CONTAINER ================= */
 .chatContainer {
   display: flex;
   flex-direction: column;
   height: 100%;
-  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  background: var(--bg-main, linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%));
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 5px 40px rgba(0, 0, 0, 0.16);
@@ -23,7 +26,7 @@
 }
 
 .chatHeader {
-  background: #2563EB;
+  background: var(--primary-color, #2563EB);
   color: white;
   padding: 20px;
   display: flex;
@@ -42,8 +45,9 @@
 
 .analyzeButton {
   padding: 8px 16px;
-  background-color: white;
-  color: #2563EB;
+  /* Popravljeno: koristi bg-input ili bijelu za svijetlu temu */
+  background-color: var(--bg-input, white);
+  color: var(--primary-color, #2563EB);
   border: none;
   border-radius: 8px;
   font-weight: 700;
@@ -53,7 +57,7 @@
 }
 
 .analyzeButton:hover {
-  background-color: #f0f4ff;
+  background-color: var(--bg-card, #f0f4ff);
   transform: scale(1.05);
 }
 
@@ -62,6 +66,7 @@
   cursor: not-allowed;
 }
 
+/* ================= MESSAGES AREA ================= */
 .messagesArea {
   flex: 1;
   overflow-y: auto;
@@ -69,7 +74,6 @@
   display: flex;
   flex-direction: column;
   gap: 12px;
-  /* Zaglađeno skrolanje za mobitele */
   -webkit-overflow-scrolling: touch;
 }
 
@@ -83,7 +87,7 @@
   align-items: center;
   justify-content: center;
   height: 100%;
-  color: #999;
+  color: var(--text-muted, #999);
   font-size: 16px;
   text-align: center;
 }
@@ -109,7 +113,6 @@
   padding: 12px 16px;
   border-radius: 12px;
   line-height: 1.4;
-  /* POPRAVAK ZA TEKST KOJI IZLAZI */
   overflow-wrap: break-word;
   word-wrap: break-word;
   word-break: break-word;
@@ -117,17 +120,19 @@
 }
 
 .message.user .messageContent {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: var(--primary-gradient, linear-gradient(135deg, #667eea 0%, #764ba2 100%));
   color: white;
   border-bottom-right-radius: 4px;
   box-shadow: 0 2px 8px rgba(102, 126, 234, 0.4);
 }
 
 .message.ai .messageContent {
-  background: white;
-  color: #333;
+  /* Popravljeno: maknut fiksni 'white', sad sluša var(--bg-card) */
+  background: var(--bg-card, white);
+  color: var(--text-main, #333);
   border-bottom-left-radius: 4px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--border-color, transparent);
 }
 
 .messageContent p { margin: 0 0 10px 0; white-space: pre-wrap; }
@@ -136,36 +141,45 @@
 
 .timestamp {
   font-size: 12px;
-  color: #999;
+  color: var(--text-muted, #999);
   margin-top: 4px;
   padding: 0 8px;
 }
 
+/* ================= INPUT AREA ================= */
 .inputArea {
   display: flex;
   gap: 10px;
   padding: 16px 20px;
-  background: white;
-  border-top: 1px solid #e0e0e0;
+  /* Popravljeno: pozadina i rub prate aktivnu temu */
+  background: var(--bg-main, white);
+  border-top: 1px solid var(--border-color, #e0e0e0);
   align-items: flex-end;
 }
 
 .input {
   flex: 1;
   padding: 12px 16px;
-  border: 1px solid #ddd;
+  border: 1px solid var(--border-color, #ddd);
+  background-color: var(--bg-input, #fff);
+  color: var(--text-main, #333);
   border-radius: 8px;
   font-family: inherit;
-  font-size: 16px; /* 16px sprječava automatsko zumiranje na iPhoneu */
+  font-size: 16px; 
   resize: none;
   max-height: 120px;
   min-height: 44px;
   transition: border-color 0.2s;
 }
 
+.input:focus {
+  outline: none;
+  border-color: var(--primary-color, #3061ca);
+}
+
 .sendButton {
   padding: 12px 24px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: var(--primary-gradient, linear-gradient(135deg, #667eea 0%, #764ba2 100%));
   color: white;
   border: none;
   border-radius: 8px;
@@ -175,71 +189,29 @@
   min-height: 44px;
 }
 
-/* --- MOBILE LAYOUT POPRAVCI --- */
-
+/* ================= RESPONSIVE ================= */
 @media (max-width: 768px) {
-  .wrapper {
-    flex-direction: column;
-    height: auto;
-  }
-
-  .navContainer {
-    width: 100%;
-    height: auto;
-    position: static;
-  }
-
-  .mainContainer {
-    padding: 10px; /* Smanjen padding na mobitelu da ostane više mjesta za chat */
-    height: calc(100vh - 80px); /* Oduzimamo otprilike visinu navigacije */
-  }
-
-  .chatContainer {
-    border-radius: 12px; /* Zadržavamo zaobljenje ali prilagođeno */
-  }
-
-  .chatHeader {
-    padding: 15px;
-  }
-
-  .chatHeader h2 {
-    font-size: 20px;
-  }
-
-  .messageContent {
-    max-width: 90%; /* Na mobitelu dopuštamo šire balone */
-    font-size: 14px;
-  }
-
-  .inputArea {
-    padding: 10px;
-    gap: 5px;
-  }
-
-  .sendButton {
-    padding: 10px 15px;
-    min-width: 60px;
-  }
+  .wrapper { flex-direction: column; height: auto; padding-bottom: 70px; }
+  .navContainer { width: 100%; height: auto; position: static; }
+  .mainContainer { padding: 10px; height: calc(100vh - 80px); flex: 1; overflow: hidden; }
+  .chatContainer { border-radius: 12px; }
+  .chatHeader { padding: 15px; }
+  .chatHeader h2 { font-size: 20px; }
+  .messageContent { max-width: 90%; font-size: 14px; }
+  .inputArea { padding: 10px; gap: 5px; }
+  .sendButton { padding: 10px 15px; min-width: 60px; }
 }
 
-/* Desktop layout ostaje nepromijenjen prema tvom zahtjevu */
 @media (min-width: 1260px) {
   .wrapper {
     display: grid;
     grid-template-columns: 1fr 4fr;
     grid-template-areas: "nav main";
     gap: 2rem;
-    background-color: #c9c8c8;
+    background-color: var(--bg-desktop-wrapper);
     padding: 2rem;
   }
-
-  .navContainer {
-    grid-area: nav;
-    height: 100vh;
-    position: sticky;
-    top: 0;
-  }
-
+  .navContainer { grid-area: nav; height: 100vh; position: sticky; top: 0; }
   .mainContainer {
     grid-area: main;
     background-color: transparent;
@@ -248,24 +220,9 @@
     padding-top: 0;
     overflow: hidden;
   }
-
   .chatContainer {
-    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    background: var(--bg-main, linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%));
     border-radius: 1rem;
     box-shadow: none;
   }
-}
-
-@media (max-width: 768px) {
-    .wrapper {
-        padding-bottom: 70px; 
-        height: 100vh;
-        display: flex;
-        flex-direction: column;
-    }
-
-    .mainContainer {
-        flex: 1;
-        overflow: hidden;
-    }
 }

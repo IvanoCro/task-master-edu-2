@@ -32,6 +32,11 @@ const Settings = () => {
                         <h3>Credits</h3>
                         <img className={styles.arrowImg} src={`${import.meta.env.BASE_URL}img/right-arrow.png`} alt="arrow pointing right" />
                     </Link>
+                    <Link className={styles.settingContainer} to="/Themes">
+                        
+                        <h3>Themes</h3>
+                        <img className={styles.arrowImg} src={`${import.meta.env.BASE_URL}img/right-arrow.png`} alt="arrow pointing right" />
+                    </Link>
                 </main>
             </div>
         </div>
