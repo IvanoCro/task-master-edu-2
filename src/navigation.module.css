@@ -30,6 +30,10 @@
     transition: all 0.2s ease;
     flex: 1; 
     min-height: 44px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
 }
 
 .navIcon {
@@ -38,7 +42,6 @@
     transition: transform 0.2s ease;
 }
 
-/* Aktivno stanje na mobitelu - vizualni feedback preko varijable filtera */
 .navLink.active .navIcon {
     transform: translateY(-3px);
     filter: var(--nav-filter);
@@ -48,8 +51,75 @@
     display: none;
 }
 
+/* --- MORE MENU STILOVI (MOBITEL) --- */
+.backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 998;
+}
+
+.moreMenu {
+    position: fixed;
+    bottom: -100%; /* Skriveno po defaultu */
+    left: 0;
+    width: 100%;
+    background-color: var(--bg-nav-mobile);
+    border-radius: 20px 20px 0 0;
+    box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.15);
+    z-index: 999;
+    transition: bottom 0.3s ease-in-out;
+    padding: 1.5rem 0;
+}
+
+/* Kad se doda ova klasa preko JS-a, izbornik klizi gore */
+.moreMenuOpen {
+    bottom: calc(60px + env(safe-area-inset-bottom)); /* Sjeda točno iznad glavne navigacije */
+}
+
+.moreList {
+    display: grid;
+    grid-template-columns: repeat(4, 15fr); /* Raspoređuje ikone vodoravno unutar sheet-a */
+    gap: 1rem;
+    padding: 0 1rem;
+    margin: 0;
+    list-style: none;
+}
+
+.moreTextMobile {
+    display: block;
+    font-size: 0.75rem;
+    margin-top: 4px;
+    color: var(--text-nav);
+}
+
+.moreBtn {
+    width: 100%;
+}
+
+/* Upravljanje vidljivošću */
+.desktopOnly {
+    display: none;
+}
+
+.mobileOnly {
+    display: block;
+}
+
+
 /* --- DESKTOP LAYOUT (1260px+) --- */
 @media (min-width: 1260px) {
+    .desktopOnly {
+        display: block;
+    }
+
+    .mobileOnly, .moreMenu, .backdrop {
+        display: none !important;
+    }
+
     .navContainer {
         position: relative;
         max-width: fit-content;
